@@ -5,7 +5,6 @@ const Home = () => {
   return (
     <div>
       <p> HOME</p>
-      <p> Kuba - zrób próbny pull request</p>
     </div>
   );
 };

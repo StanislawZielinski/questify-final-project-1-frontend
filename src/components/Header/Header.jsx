@@ -1,22 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./NavBar.scss";
+import "./Header.scss";
 import { ReactComponent as LogoutImg } from "../../images/logout.svg";
 // import { useSelector } from "react-redux";
-// import Email from "components/UserMenu/Email";
-// import LogOut from "components/UserMenu/LogOut";
 
-const NavBar = () => {
+const Header = () => {
   //   const isLogged = useSelector((state) => state.isLogged.isLogged);
   return (
     <nav className="header">
       <div className="header-title">Questify</div>
-
-      <div className="nav-name">
-        <p className="circle">J</p>
-        <p className="nav-description">John's Quest Log</p>
+      <div className="header-nav">
+        <p className="header-nav-email">J</p>
+        <p className="header-nav-description">John's Quest Log</p>
       </div>
-      <NavLink to="/Landing">
+      <NavLink to="/">
         <LogoutImg />
       </NavLink>
 
@@ -27,4 +24,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Header;

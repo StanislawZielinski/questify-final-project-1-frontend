@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 // import { PrivateRoute } from "./PrivateRoute";
 import { lazy } from "react";
 
-const Landing = lazy(() => import("./pages/Landing/Landing"));
+const Home = lazy(() => import("./pages/Home/Home"));
 const SharedLayout = lazy(() => import("./pages/SharedLayout/SharedLayout"));
 // const Contacts = lazy(() => import("../pages/Contacts"));
 
@@ -14,7 +14,7 @@ export const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Landing />} />
+          <Route index element={<Home />} />
         </Route>
       </Routes>
     </div>

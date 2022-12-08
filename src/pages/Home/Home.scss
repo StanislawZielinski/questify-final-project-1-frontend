@@ -1,0 +1,41 @@
+.container {
+  padding: 0 15px;
+  font-family: Helvetica;
+  letter-spacing: 0.02em;
+}
+
+.title {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 60px;
+  color: #00d7ff;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 29px;
+  color: #15395a;
+  margin-bottom: 30px;
+}
+
+.login-info {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 45px;
+  color: #b9c3c8;
+}
+.rectangle {
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+// TABLET*******************
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 90px;
+  }
+}

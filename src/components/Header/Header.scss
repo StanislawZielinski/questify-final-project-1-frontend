@@ -10,11 +10,11 @@ $fontPrimary: #00d7ff;
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
+  font-family: Helvetica;
 }
 
 .header-title {
   color: $fontPrimary;
-  font-family: HelveticaNeueCyr;
   font-size: 18px;
   font-weight: 700;
   line-height: 18px;
@@ -22,8 +22,7 @@ $fontPrimary: #00d7ff;
   width: 90%;
 }
 
-.nav-name {
-  font-family: HelveticaNeueCyr;
+.header-nav {
   font-size: 17px;
   font-weight: 900;
   line-height: 16px;
@@ -34,7 +33,7 @@ $fontPrimary: #00d7ff;
   color: #ffffff;
   margin-right: 10px;
 }
-.circle {
+.header-nav-email {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -44,15 +43,14 @@ $fontPrimary: #00d7ff;
   justify-content: center;
 }
 
-.nav-description {
+.header-nav-description {
   display: none;
 }
 
 // TABLET*******************
 @media screen and (min-width: 768px) {
-  .nav-description {
+  .header-nav-description {
     display: block;
-    font-family: HelveticaNeueCyr;
     font-size: 17px;
     font-weight: 400;
     line-height: 17px;

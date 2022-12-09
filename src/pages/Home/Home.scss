@@ -9,7 +9,7 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 24px;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   color: #00d7ff;
 }
 
@@ -26,16 +26,63 @@
   font-weight: 400;
   line-height: 45px;
   color: #b9c3c8;
+  margin-bottom: 30px;
 }
 .rectangle {
   max-width: 100%;
   position: absolute;
   bottom: 0;
+  right: 0;
 }
 
 // TABLET*******************
 @media screen and (min-width: 768px) {
+  .rectangle {
+    display: none;
+  }
   .container {
     padding: 0 90px;
+    max-width: 515px;
+  }
+  .home {
+    display: flex;
+    align-items: center;
+    background-image: url("../../images/pic1.png"), url("../../images/pic2.png");
+    background-position: top right, bottom right;
+    background-repeat: no-repeat, no-repeat;
+    height: 90vh;
+  }
+  .title {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 60px;
+    color: #00d7ff;
+  }
+  .description {
+    font-size: 33px;
+    line-height: 45px;
+    margin-bottom: 25px;
+  }
+  .login-info {
+    font-size: 24px;
+  }
+}
+
+// DESKTOP*******************
+@media screen and (min-width: 1200px) {
+  .container {
+    padding: 190px 230px;
+    max-width: 560px;
+  }
+  .home {
+    background-image: url("../../images/pic1.png"), url("../../images/pic2.png");
+    background-position: top right, bottom right;
+    background-repeat: no-repeat, no-repeat;
+    height: 90vh;
+  }
+  .description {
+    font-size: 36px;
   }
 }

@@ -1,24 +1,24 @@
 import React from "react";
-import "./LoginForm.scss";
+import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
   return (
-    <form className="form">
+    <form className={styles.form}>
       <input
-        className="form-input"
+        className={styles.formInput}
         type="text"
         id="fname"
         name="fname"
         placeholder="Email"
       />
       <input
-        className="form-input"
+        className={styles.formInput}
         type="text"
         id="lname"
         name="lname"
         placeholder="Password"
       />
-      <input className="form-button" type="submit" value="go!" />
+      <input className={styles.formButton} type="submit" value="go!" />
     </form>
   );
 };

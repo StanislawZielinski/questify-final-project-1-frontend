@@ -26,7 +26,7 @@ const LoginForm = () => {
     console.log(email, password);
     const canRegister = [email, password].every(Boolean);
     console.log(canRegister);
-    const credentials = { email, password };
+    // const credentials = { email, password };
     if (canRegister) {
       try {
         Notiflix.Loading.standard("wait...");

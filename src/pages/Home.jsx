@@ -13,6 +13,16 @@ const Home = () => {
   //   dispatch(fetchCards());
   // }, [dispatch]);
 
+  // LOGIN PAGE - REDUX 😊
+  // const initialState = {
+  //   email: '',
+  //   password: '',
+  // // };
+  // const [state, setState] = useState(initialState);
+  // const { email, password } = state;
+  // const dispatch = useDispatch();
+  // handlesuBmit -> dispatch(login(state)); (import from redux/auth/operations)
+
   return (
     <div>
       <p> HOME</p>

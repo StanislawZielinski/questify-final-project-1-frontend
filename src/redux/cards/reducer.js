@@ -1,5 +1,5 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import { fetchCards, addCard, deleteCard, editCard } from "../services/api";
+import { fetchCards, addCard, deleteCard, editCard } from "./operations";
 
 const cards = createReducer([], {
   [fetchCards.fulfilled]: (_, { payload }) => {
@@ -8,7 +8,7 @@ const cards = createReducer([], {
   [addCard.fulfilled]: (state, { payload }) => [payload, ...state],
   // check if edit works properly or if needs any modifications:
   [editCard.fulfilled]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload.id),
+    state.filter((card) => card.id === payload.id && [payload, ...state]),
   [deleteCard.fulfilled]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload.id),
 });
@@ -36,7 +36,7 @@ const error = createReducer(null, {
   [editCard.rejected]: (_, { payload }) => payload,
   [deleteCard.rejected]: (_, { payload }) => payload,
 });
-export const reducer = combineReducers({
+export const reducers = combineReducers({
   cards,
   loading,
   error,

@@ -33,9 +33,9 @@ const reducer = {
   auth: persistReducer(authPersistConfig, authReducer),
   cards: reducers,
 };
-export const store = configureStore({
+export let store = configureStore({
   reducer,
   middleware,
   devTools: process.env.NODE_ENV === "development",
 });
-export const persistor = persistStore(store);
+export let persistor = persistStore(store);

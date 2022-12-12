@@ -3,6 +3,8 @@
 // import { useDispatch, useSelector } from "react-redux";
 // import { fetchCards } from "../services/api";
 
+import { QuestListsContainer } from "../components/QuestListsContainer/QuestListsContainer"; 
+
 const Home = () => {
   // const cardsState = useSelector((state) => state.cards);
   // const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const Home = () => {
     <div>
       <p> HOME</p>
       {/* {isError && <p>error.message</p>} */}
+      <QuestListsContainer />
     </div>
   );
 };

@@ -1,0 +1,158 @@
+.card {
+  width: 290px;
+  height: 260px;
+  background: #ffffff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+}
+
+.formTop {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin: 0 0 40px 10px;
+  & .levelBox {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  & .checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+// #levelBtn style depending on value
+
+[value="Easy"] {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: green;
+}
+
+[value="Normal"] {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: orange;
+}
+
+[value="Hard"] {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: red;
+}
+
+.formMiddle {
+  & .info {
+    color: #b9c3c8;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  & .name {
+    outline: none;
+    border: none;
+    display: block;
+    text-align: center;
+    margin: 10px auto 12px auto;
+    border-bottom: 1px solid #00d7ff;
+    caret-color: #00d7ff;
+    color: #282828;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+// styles for datetime picker
+
+[type="datetime-local"] {
+  outline: none;
+  border: none;
+  display: block;
+  margin: 0 auto 34px auto;
+  font-size: 18px;
+  line-height: 18px;
+  color: #b9c3c8;
+}
+
+// CSS filter generator to convert from black to target hex color -> https://codepen.io/sosuke/pen/Pjoqqp
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(78%) sepia(49%) saturate(5346%) hue-rotate(148deg)
+    brightness(102%) contrast(108%);
+}
+
+.formBottom {
+  display: flex;
+  justify-content: space-between;
+  & .groupBtn {
+    color: #282828;
+    border: none;
+    width: 88px;
+    height: 25px;
+    border-radius: 0px 15px 15px 0px;
+    font-size: 14px;
+    line-height: 14px;
+    cursor: pointer;
+  }
+  & .options {
+    margin-right: 20px;
+    color: #b9c3c8;
+    & .cancel {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    & .submit {
+      border: none;
+      background-color: transparent;
+      color: #00d7ff;
+      cursor: pointer;
+    }
+  }
+}
+
+// #groupBtn style depending on value
+
+[value="STUFF"] {
+  background-color: #b9c3c8;
+}
+
+[value="FAMILY"] {
+  background-color: #ffe6d3;
+}
+
+[value="HEALTH"] {
+  background-color: #cdf7ff;
+}
+
+[value="LEARNING"] {
+  background-color: #fff6c0;
+}
+
+[value="LEISURE"] {
+  background-color: #f8d2ff;
+}
+
+[value="WORK"] {
+  background-color: #d3f6ce;
+}

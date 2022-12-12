@@ -1,18 +1,14 @@
 import React from "react";
 import styles from "./LoginForm.module.css";
-// import { useDispatch } from "react-redux";
-// import { useAddNewUserMutation } from "redux/apiSlice";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/operations";
 import Notiflix from "notiflix";
-// import { addToken } from "../../redux/tokenSlice";
-// import { logIn } from "../../redux/isLoggedSlice";
-// import { addUser } from "../../redux/userSlice";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   // START ********************
-  // const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const [addNewUser] = useAddNewUserMutation();
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("object");
@@ -21,16 +17,18 @@ const LoginForm = () => {
     const passwordDOM = document.getElementById("password");
     const email = emailDOM.value;
     const password = passwordDOM.value;
-
+    const name = "Stachu";
     console.log(typeof email, typeof password);
-    console.log(email, password);
+    console.log(name, password);
     const canRegister = [email, password].every(Boolean);
     console.log(canRegister);
-    // const credentials = { email, password };
+    const credentials = { name, email, password };
+    console.log(canRegister);
     if (canRegister) {
       try {
         Notiflix.Loading.standard("wait...");
         Notiflix.Loading.remove(2000);
+        dispatch(register(credentials));
         // await addNewUser(credentials)
         //   .unwrap()
         //   .then(({ token }) => {
@@ -49,10 +47,10 @@ const LoginForm = () => {
       }
     }
 
-    const form = document.getElementById("form");
-    form.reset();
+    // const form = document.getElementById("form");
+    // form.reset();
 
-    await navigate("/dashboard", { replace: true });
+    // await navigate("/dashboard", { replace: true });
   };
   // END *********
 

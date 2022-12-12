@@ -2,10 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import { ReactComponent as LogoutImg } from "../../images/logout.svg";
-// import { useSelector } from "react-redux";
 
 const Header = () => {
-  //   const isLogged = useSelector((state) => state.isLogged.isLogged);
   return (
     <nav className="header">
       <div className="header-title">Questify</div>

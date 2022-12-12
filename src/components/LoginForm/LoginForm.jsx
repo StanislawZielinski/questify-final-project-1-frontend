@@ -38,9 +38,9 @@ const LoginForm = () => {
         return;
       }
     }
-    const form = document.getElementById("form");
-    form.reset();
-    await navigate("/dashboard", { replace: true });
+    // const form = document.getElementById("form");
+    // form.reset();
+    // await navigate("/dashboard", { replace: true });
   };
   // END *********
 

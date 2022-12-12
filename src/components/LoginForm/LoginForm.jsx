@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./LoginForm.module.css";
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/operations";
+import { login } from "../../redux/auth/operations";
 import Notiflix from "notiflix";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   // START ********************
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("object");
@@ -28,29 +28,19 @@ const LoginForm = () => {
       try {
         Notiflix.Loading.standard("wait...");
         Notiflix.Loading.remove(2000);
-        dispatch(register(credentials));
-        // await addNewUser(credentials)
-        //   .unwrap()
-        //   .then(({ token }) => {
-        //     if (token !== undefined) {
-        //       dispatch(addToken(token));
-        //       dispatch(logIn(true));
-        //       dispatch(addUser(email, password));
-        //     } else {
-        //       Notiflix.Notify.failure(`Something went wrong. Pleasw try again`);
-        //       return;
-        //     }
-        //   });
+        dispatch(login(credentials));
+
+        // const form = document.getElementById("form");
+        // form.reset();
+        // await navigate("/dashboard", { replace: true });
       } catch (error) {
         alert("error");
         return;
       }
     }
-
-    // const form = document.getElementById("form");
-    // form.reset();
-
-    // await navigate("/dashboard", { replace: true });
+    const form = document.getElementById("form");
+    form.reset();
+    await navigate("/dashboard", { replace: true });
   };
   // END *********
 

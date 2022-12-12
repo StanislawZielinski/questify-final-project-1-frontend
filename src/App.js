@@ -3,10 +3,8 @@ import { Route, Routes } from "react-router-dom";
 // import { PublicRoute } from "./PublicRoute";
 // import { PrivateRoute } from "./PrivateRoute";
 import { lazy } from "react";
-
+import SharedLayout from "./pages/SharedLayout/SharedLayout";
 const Home = lazy(() => import("./pages/Home/Home"));
-const SharedLayout = lazy(() => import("./pages/SharedLayout/SharedLayout"));
-// const Contacts = lazy(() => import("../pages/Contacts"));
 
 export const App = () => {
   return (

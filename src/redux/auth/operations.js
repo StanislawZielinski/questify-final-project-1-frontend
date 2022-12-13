@@ -34,6 +34,7 @@ export const register = (credentials) => async (dispatch) => {
     dispatch(registerError(error.message));
   }
 };
+
 //post user/login
 export const login = (credentials) => async (dispatch) => {
   dispatch(loginRequest());

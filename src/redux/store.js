@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "development") {
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "isLoggedIn"],
 };
 const reducer = {
   auth: persistReducer(authPersistConfig, authReducer),

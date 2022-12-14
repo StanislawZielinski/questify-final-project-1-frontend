@@ -1,19 +1,33 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-// import { PublicRoute } from "./PublicRoute";
-// import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "../src/components/Routes/PublicRoute";
+import { PrivateRoute } from "../src/components/Routes/PrivateRoute";
 import { lazy } from "react";
-
+import SharedLayout from "./pages/SharedLayout/SharedLayout";
 const Home = lazy(() => import("./pages/Home/Home"));
-const SharedLayout = lazy(() => import("./pages/SharedLayout/SharedLayout"));
-// const Contacts = lazy(() => import("../pages/Contacts"));
+const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
 
 export const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <PublicRoute redirectTo="/dashboard" component={<Home />} />
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={<PrivateRoute redirectTo="/" component={<Dashboard />} />}
+          />
+          <Route
+            path="*"
+            element={
+              <PublicRoute redirectTo="/dashboard" component={<Home />} />
+            }
+          />
         </Route>
       </Routes>
     </div>

@@ -2,10 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import { ReactComponent as LogoutImg } from "../../images/logout.svg";
-// import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/auth/operations";
 
 const Header = () => {
-  //   const isLogged = useSelector((state) => state.isLogged.isLogged);
+  const dispatch = useDispatch();
+  const logoutFn = () => {
+    dispatch(logout());
+  };
   return (
     <nav className="header">
       <div className="header-title">Questify</div>
@@ -14,7 +18,9 @@ const Header = () => {
         <p className="header-nav-description">John's Quest Log</p>
       </div>
       <NavLink to="/">
-        <LogoutImg />
+        <button className="header-button-logout" onClick={logoutFn}>
+          <LogoutImg />
+        </button>
       </NavLink>
 
       {/* {!isLogged && <NavLink to="/">Home</NavLink>}

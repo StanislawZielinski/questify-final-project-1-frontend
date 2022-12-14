@@ -1,0 +1,38 @@
+.title {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 50px;
+  color: #00d7ff;
+}
+.description {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 29px;
+  color: #15395a;
+  margin-bottom: 30px;
+}
+
+// TABLET*******************
+@media screen and (min-width: 768px) {
+  .title {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 60px;
+    color: #00d7ff;
+  }
+  .description {
+    font-size: 33px;
+    line-height: 45px;
+    margin-bottom: 25px;
+  }
+}
+// DESKTOP*******************
+@media screen and (min-width: 1200px) {
+  .description {
+    font-size: 36px;
+  }
+}

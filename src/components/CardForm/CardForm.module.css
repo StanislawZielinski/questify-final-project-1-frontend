@@ -1,69 +1,49 @@
 .card {
-  width: 290px;
-  height: 260px;
   background: #ffffff;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03), 3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
+  transition: all 0.2s ease-in-out;
 }
-
-.formTop {
+.card:hover {
+  transform: scale(1.02);
+}
+.card .formTop {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
-  margin: 0 0 40px 10px;
 }
-.formTop .levelBox {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
-}
-.formTop .checkbox {
+.card .formTop .checkbox {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-
-[value=Easy] {
-  outline: none;
-  border: none;
-  background-color: transparent;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
-  color: green;
+.card .formTop .checkmark {
+  width: 19px;
+  height: 19px;
+  display: inline-block;
+  margin-right: 20px;
+  position: relative;
+  vertical-align: middle;
+  fill: #00d7ff;
+  border-radius: 50%;
+  -webkit-animation: svg-shadow 1.5s ease infinite alternate;
+          animation: svg-shadow 1.5s ease infinite alternate;
 }
-
-[value=Normal] {
-  outline: none;
-  border: none;
-  background-color: transparent;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
-  color: orange;
+.card .formTop .checkbox:checked + .checkmark {
+  fill: rgb(185, 195, 200);
+  -webkit-animation: svg-shadow-done 1.5s ease infinite alternate;
+          animation: svg-shadow-done 1.5s ease infinite alternate;
 }
-
-[value=Hard] {
-  outline: none;
-  border: none;
-  background-color: transparent;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
-  color: red;
-}
-
-.formMiddle .info {
+.card .formMiddle .info {
   color: #b9c3c8;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 14px;
+  font-weight: 700;
   margin: 0 auto;
   text-align: center;
 }
-.formMiddle .name {
+.card .formMiddle .name {
+  width: 163px;
   outline: none;
   border: none;
   display: block;
@@ -73,52 +53,159 @@
   caret-color: #00d7ff;
   color: #282828;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
+}
+.card .formBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .formBottom .groupBtn {
+  color: #282828;
+  border: none;
+  border-radius: 0px 15px 15px 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.card .formBottom .groupBtn:hover {
+  transform: scale(1.1);
+}
+.card .formBottom .options {
+  margin-right: 20px;
+  color: #b9c3c8;
+  text-align: center;
+}
+.card .formBottom .options .cancel {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.card .formBottom .options .submit {
+  display: inline-block;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  color: #00d7ff;
+  cursor: pointer;
+}
+.card .formBottom .options .submit::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(0, 217, 255);
+  transform-origin: bottom midle;
+  transition: transform 0.25s ease-out;
+}
+.card .formBottom .options .submit:hover::after {
+  transform: scaleX(0.8);
+  transform-origin: bottom midle;
 }
 
+@-webkit-keyframes svg-shadow {
+  from {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(0, 217, 255, 0.3)) drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(0, 217, 255, 0.6)) drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+  }
+}
+
+@keyframes svg-shadow {
+  from {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(0, 217, 255, 0.3)) drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(0, 217, 255, 0.6)) drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+  }
+}
+@-webkit-keyframes svg-shadow-done {
+  from {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(185, 195, 200, 0.3)) drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(185, 195, 200, 0.6)) drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
+  }
+}
+@keyframes svg-shadow-done {
+  from {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(185, 195, 200, 0.3)) drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(185, 195, 200, 0.6)) drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
+  }
+}
+[value=Easy],
+[value=Normal],
+[value=Hard] {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  -webkit-animation: blink-easy 0.5s;
+          animation: blink-easy 0.5s;
+}
+
+[value=Easy] {
+  color: green;
+}
+
+[value=Normal] {
+  color: orange;
+}
+
+[value=Hard] {
+  color: red;
+}
+
+@-webkit-keyframes blink-easy {
+  0% {
+    background: rgb(0, 128, 0);
+    width: 0;
+  }
+}
+
+@keyframes blink-easy {
+  0% {
+    background: rgb(0, 128, 0);
+    width: 0;
+  }
+}
+@-webkit-keyframes blink-normal {
+  0% {
+    background: rgb(255, 166, 0);
+    width: 0;
+  }
+}
+@keyframes blink-normal {
+  0% {
+    background: rgb(255, 166, 0);
+    width: 0;
+  }
+}
+@-webkit-keyframes blink-hard {
+  0% {
+    background: rgb(255, 0, 0);
+    width: 0;
+  }
+}
+@keyframes blink-hard {
+  0% {
+    background: rgb(255, 0, 0);
+    width: 0;
+  }
+}
 [type=datetime-local] {
   outline: none;
   border: none;
   display: block;
-  margin: 0 auto 34px auto;
-  font-size: 18px;
-  line-height: 18px;
   color: #b9c3c8;
 }
 
 ::-webkit-calendar-picker-indicator {
   filter: invert(78%) sepia(49%) saturate(5346%) hue-rotate(148deg) brightness(102%) contrast(108%);
-}
-
-.formBottom {
-  display: flex;
-  justify-content: space-between;
-}
-.formBottom .groupBtn {
-  color: #282828;
-  border: none;
-  width: 88px;
-  height: 25px;
-  border-radius: 0px 15px 15px 0px;
-  font-size: 14px;
-  line-height: 14px;
-  cursor: pointer;
-}
-.formBottom .options {
-  margin-right: 20px;
-  color: #b9c3c8;
-}
-.formBottom .options .cancel {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.formBottom .options .submit {
-  border: none;
-  background-color: transparent;
-  color: #00d7ff;
-  cursor: pointer;
 }
 
 [value=STUFF] {
@@ -143,4 +230,93 @@
 
 [value=WORK] {
   background-color: #d3f6ce;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .card {
+    width: 290px;
+    height: 260px;
+  }
+  .card .formTop {
+    margin: 0 0 40px 10px;
+  }
+  .card .formMiddle .info {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  .card .formMiddle .name {
+    font-size: 20px;
+    line-height: 20px;
+    margin: 10px auto 12px auto;
+  }
+  .card .formBottom {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  [value=Easy],
+[value=Normal],
+[value=Hard] {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  input[type=datetime-local] {
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0 auto 34px auto;
+  }
+  [value=STUFF],
+[value=FAMILY],
+[value=HEALTH],
+[value=LEARNING],
+[value=LEISURE],
+[value=WORK] {
+    width: 120px;
+    height: 35px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card {
+    width: 205px;
+    height: 200px;
+  }
+  .card .formTop {
+    margin: 0 0 20px 10px;
+  }
+  .card .formMiddle .info {
+    font-size: 12px;
+    line-height: 12px;
+  }
+  .card .formMiddle .name {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 auto;
+  }
+  .card .formBottom {
+    font-size: 11px;
+    line-height: 11px;
+  }
+  [value=Easy],
+[value=Normal],
+[value=Hard] {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  input[type=datetime-local] {
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0 auto 40px auto;
+  }
+  [value=STUFF],
+[value=FAMILY],
+[value=HEALTH],
+[value=LEARNING],
+[value=LEISURE],
+[value=WORK] {
+    width: 88px;
+    height: 25px;
+    font-size: 11px;
+    line-height: 11px;
+  }
 }/*# sourceMappingURL=CardForm.module.css.map */

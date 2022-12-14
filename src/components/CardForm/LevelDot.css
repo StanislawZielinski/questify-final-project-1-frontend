@@ -1,0 +1,59 @@
+/* It appears these cannot be modular styles, because the class name is generated when the function is applied to another element in DOM */
+
+.easyDot, .normalDot, .hardDot {
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 50%;
+
+  box-shadow: 0px 0px 5px rgba(0, 128, 0, 2);
+  width: 5px;
+  height: 5px;
+  text-align: center;
+  position: relative;
+  margin: 0 10px 2px 10px;
+  animation: glow-green 1s infinite alternate;
+}
+
+.easyDot {
+    border: 1px solid rgba(0, 128, 0, 0.6);
+}
+
+.normalDot {
+  border: 1px solid rgba(255, 166, 0, 0.6);
+}
+
+.hardDot {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+/* Glow animation */
+
+@keyframes glow-green {
+  from {
+    box-shadow: 0 0 3px -3px green;
+  }
+
+  to {
+    box-shadow: 0 0 3px 3px green;
+  }
+}
+
+@keyframes glow-orange {
+  from {
+    box-shadow: 0 0 3px -3px orange;
+  }
+
+  to {
+    box-shadow: 0 0 3px 3px orange;
+  }
+}
+
+@keyframes glow-red {
+  from {
+    box-shadow: 0 0 3px -3px red;
+  }
+
+  to {
+    box-shadow: 0 0 3px 3px red;
+  }
+}

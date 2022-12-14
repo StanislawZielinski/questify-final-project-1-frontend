@@ -1,0 +1,328 @@
+.card {
+  background: #ffffff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+  }
+  .formTop {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    & .checkbox {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    & .checkmark {
+      width: 19px;
+      height: 19px;
+      display: inline-block;
+      margin-right: 20px;
+      position: relative;
+      vertical-align: middle;
+      fill: #00d7ff;
+      border-radius: 50%;
+      animation: svg-shadow 1.5s ease infinite alternate;
+    }
+    & .checkbox:checked + .checkmark {
+      fill: rgb(185, 195, 200);
+      animation: svg-shadow-done 1.5s ease infinite alternate;
+    }
+  }
+  .formMiddle {
+    & .info {
+      color: #b9c3c8;
+      font-weight: 700;
+      margin: 0 auto;
+      text-align: center;
+    }
+    & .name {
+      width: 163px;
+      outline: none;
+      border: none;
+      display: block;
+      text-align: center;
+      margin: 10px auto 12px auto;
+      border-bottom: 1px solid #00d7ff;
+      caret-color: #00d7ff;
+      color: #282828;
+      font-weight: 700;
+    }
+  }
+  .formBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .groupBtn {
+      color: #282828;
+      border: none;
+      border-radius: 0px 15px 15px 0px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    & .options {
+      margin-right: 20px;
+      color: #b9c3c8;
+      text-align: center;
+      & .cancel {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+      & .submit {
+        display: inline-block;
+        position: relative;
+        border: none;
+        background-color: transparent;
+        color: #00d7ff;
+        cursor: pointer;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(0, 217, 255);
+          transform-origin: bottom midle;
+          transition: transform 0.25s ease-out;
+        }
+        &:hover::after {
+          transform: scaleX(0.8);
+          transform-origin: bottom midle;
+        }
+      }
+    }
+  }
+}
+
+// .checkmark -> checkbox SVG animation
+
+@keyframes svg-shadow {
+  from {
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(0, 217, 255, 0.3))
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
+  }
+
+  to {
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.6))
+      drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+  }
+}
+
+@keyframes svg-shadow-done {
+  from {
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(185, 195, 200, 0.3))
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
+  }
+
+  to {
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.6))
+      drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
+  }
+}
+
+// #levelBtn -> styles depending on value
+
+[value="Easy"],
+[value="Normal"],
+[value="Hard"] {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  animation: blink-easy 0.5s;
+}
+
+[value="Easy"] {
+  color: green;
+}
+
+[value="Normal"] {
+  color: orange;
+}
+
+[value="Hard"] {
+  color: red;
+}
+
+// #levelBtn -> animation
+
+@keyframes blink-easy {
+  0% {
+    background: rgba(0, 128, 0);
+    width: 0;
+  }
+}
+
+@keyframes blink-normal {
+  0% {
+    background: rgba(255, 166, 0);
+    width: 0;
+  }
+}
+
+@keyframes blink-hard {
+  0% {
+    background: rgba(255, 0, 0);
+    width: 0;
+  }
+}
+
+// styles for datetime picker
+
+[type="datetime-local"] {
+  outline: none;
+  border: none;
+  display: block;
+  color: #b9c3c8;
+}
+
+// CSS filter generator to convert from black to target hex color -> https://codepen.io/sosuke/pen/Pjoqqp
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(78%) sepia(49%) saturate(5346%) hue-rotate(148deg)
+    brightness(102%) contrast(108%);
+}
+
+// #groupBtn style depending on value
+
+[value="STUFF"] {
+  background-color: #b9c3c8;
+}
+
+[value="FAMILY"] {
+  background-color: #ffe6d3;
+}
+
+[value="HEALTH"] {
+  background-color: #cdf7ff;
+}
+
+[value="LEARNING"] {
+  background-color: #fff6c0;
+}
+
+[value="LEISURE"] {
+  background-color: #f8d2ff;
+}
+
+[value="WORK"] {
+  background-color: #d3f6ce;
+}
+
+// MOBILE
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .card {
+    width: 290px;
+    height: 260px;
+    .formTop {
+      margin: 0 0 40px 10px;
+    }
+    .formMiddle {
+      & .info {
+        font-size: 14px;
+        line-height: 14px;
+      }
+      & .name {
+        font-size: 20px;
+        line-height: 20px;
+        margin: 10px auto 12px auto;
+      }
+    }
+    & .formBottom {
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+
+  [value="Easy"],
+  [value="Normal"],
+  [value="Hard"] {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  input[type="datetime-local"] {
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0 auto 34px auto;
+  }
+
+  [value="STUFF"],
+  [value="FAMILY"],
+  [value="HEALTH"],
+  [value="LEARNING"],
+  [value="LEISURE"],
+  [value="WORK"] {
+    width: 120px;
+    height: 35px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+// TABLET & DESKTOP
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 205px;
+    height: 200px;
+    .formTop {
+      margin: 0 0 20px 10px;
+    }
+    & .formMiddle {
+      & .info {
+        font-size: 12px;
+        line-height: 12px;
+      }
+      & .name {
+        font-size: 16px;
+        line-height: 16px;
+        margin: 0 auto;
+      }
+    }
+    & .formBottom {
+      font-size: 11px;
+      line-height: 11px;
+    }
+  }
+
+  [value="Easy"],
+  [value="Normal"],
+  [value="Hard"] {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  input[type="datetime-local"] {
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0 auto 40px auto;
+  }
+
+  [value="STUFF"],
+  [value="FAMILY"],
+  [value="HEALTH"],
+  [value="LEARNING"],
+  [value="LEISURE"],
+  [value="WORK"] {
+    width: 88px;
+    height: 25px;
+    font-size: 11px;
+    line-height: 11px;
+  }
+}

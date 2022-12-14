@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Notify } from "notiflix";
 import {
   getUserError,
   getUserRequest,
@@ -44,6 +45,7 @@ export const login = (credentials) => async (dispatch) => {
     dispatch(loginSuccess(data));
   } catch (error) {
     dispatch(loginError(error.message));
+    Notify.failure("Please, check your email and password");
   }
 };
 //post /user/logout

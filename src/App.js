@@ -12,18 +12,22 @@ export const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
           <Route
             path="/"
             element={
-              <PublicRoute redirectTo="/dashboard" component={<Dashboard />} />
+              <PublicRoute redirectTo="/dashboard" component={<Home />} />
             }
           />
           <Route
             path="/dashboard"
             element={<PrivateRoute redirectTo="/" component={<Dashboard />} />}
           />
-          <Route path="*" element={<Home />} />
+          <Route
+            path="*"
+            element={
+              <PublicRoute redirectTo="/dashboard" component={<Home />} />
+            }
+          />
         </Route>
       </Routes>
     </div>

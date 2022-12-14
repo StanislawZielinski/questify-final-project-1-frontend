@@ -11,8 +11,6 @@ export const PublicRoute = ({
   redirectTo = "/dashboard",
 }) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  console.log(isLoggedIn);
-  console.log("object");
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };
 

@@ -7,13 +7,10 @@ import PropTypes from "prop-types";
  * - Otherwise render the component
  */
 
-export const PrivateRoute = ({
-  component: Component,
-  redirectTo = "/dashboard",
-}) => {
+export const PrivateRoute = ({ component: Component, redirectTo = "/" }) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   console.log(isLoggedIn);
-  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
+  return !isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };
 
 PrivateRoute.propTypes = {

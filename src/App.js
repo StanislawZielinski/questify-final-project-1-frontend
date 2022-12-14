@@ -15,13 +15,13 @@ export const App = () => {
           <Route index element={<Home />} />
           <Route
             path="/"
-            element={<PublicRoute redirectTo="/" component={<Home />} />}
+            element={
+              <PublicRoute redirectTo="/dashboard" component={<Dashboard />} />
+            }
           />
           <Route
             path="/dashboard"
-            element={
-              <PrivateRoute redirectTo="/dashboard" component={<Dashboard />} />
-            }
+            element={<PrivateRoute redirectTo="/" component={<Dashboard />} />}
           />
           <Route path="*" element={<Home />} />
         </Route>

@@ -6,8 +6,13 @@ import PropTypes from "prop-types";
  * - Otherwise render the component
  */
 
-export const PublicRoute = ({ component: Component, redirectTo = "/" }) => {
-  const isLoggedIn = useSelector((state) => state.isLogged.isLogged);
+export const PublicRoute = ({
+  component: Component,
+  redirectTo = "/dashboard",
+}) => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  console.log(isLoggedIn);
+  console.log("object");
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };
 

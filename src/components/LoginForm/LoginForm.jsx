@@ -27,7 +27,6 @@ const LoginForm = () => {
       Notify.info("Please, check your email and password");
       return;
     }
-
     // const form = document.getElementById("form");
     // form.reset();
   };

@@ -63,6 +63,9 @@ $fontPrimary: #00d7ff;
     color: #7b8aa4;
     margin-left: 10px;
   }
+  .header-nav-description::first-letter {
+    text-transform: capitalize;
+  }
   .header {
     display: flex;
     justify-content: space-between;

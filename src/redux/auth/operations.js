@@ -33,6 +33,7 @@ export const register = (credentials) => async (dispatch) => {
     dispatch(registerSuccess(data));
   } catch (error) {
     dispatch(registerError(error.message));
+    Notify.failure("Please, check your email and password");
   }
 };
 

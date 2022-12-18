@@ -11,9 +11,8 @@ const LoginForm = () => {
     e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const name = "Stachu";
     const canLogin = [email, password].every(Boolean);
-    const credentials = { name, email, password };
+    const credentials = { email, password };
     if (canLogin) {
       try {
         Notiflix.Loading.standard("wait...");

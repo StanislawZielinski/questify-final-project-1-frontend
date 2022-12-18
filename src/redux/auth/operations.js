@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Notify } from "notiflix";
+import { useNavigate } from "react-router-dom";
 import {
   getUserError,
   getUserRequest,
@@ -12,10 +13,10 @@ import {
   logoutSuccess,
   registerError,
   registerRequest,
-  registerSuccess,
+  // registerSuccess,
 } from "./actions";
 // THIS IS JUST EXAMPLE URL CHANGE IT FOR JAKUB API - AWAITING FOR BACKEND
-axios.defaults.baseURL = "https://connections-api.herokuapp.com";
+axios.defaults.baseURL = "https://backend-questify.herokuapp.com";
 //add JWT
 const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -25,23 +26,27 @@ const removeAuthToken = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 //post user/signup
+  const navigate = useNavigate();
 export const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
+  // const navigate = useNavigate();
   try {
-    const { data } = await axios.post("/users/signup", credentials);
-    setAuthToken(data.token);
-    dispatch(registerSuccess(data));
+    const { data } = await axios.post("/api/auth/signup", credentials);
+    console.log(data);
+    // setAuthToken(data.token);
+    // dispatch(registerSuccess(data));
   } catch (error) {
     dispatch(registerError(error.message));
     Notify.failure("Please, check your email and password");
   }
+  // navigate("/", { replace: true });
 };
 
 //post user/login
 export const login = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const { data } = await axios.post("/users/login", credentials);
+    const { data } = await axios.post("/api/auth/login", credentials);
     setAuthToken(data.token);
     dispatch(loginSuccess(data));
   } catch (error) {
@@ -53,7 +58,7 @@ export const login = (credentials) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch(logoutRequest());
   try {
-    await axios.post("/users/logout");
+    await axios.post("/api/auth/logout");
     removeAuthToken();
     dispatch(logoutSuccess());
   } catch (error) {

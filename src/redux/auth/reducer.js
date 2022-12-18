@@ -15,8 +15,8 @@ const initialUserState = {
   password: null,
 };
 const user = createReducer(initialUserState, {
-  [registerSuccess]: (_, { payload }) => payload.user.email,
-  [loginSuccess]: (_, { payload }) => payload.user.email,
+  [registerSuccess]: (_, { payload }) => payload.user,
+  [loginSuccess]: (_, { payload }) => payload.user,
   [logoutSuccess]: () => initialUserState,
   [getUserSuccess]: (_, { payload }) => payload,
 });

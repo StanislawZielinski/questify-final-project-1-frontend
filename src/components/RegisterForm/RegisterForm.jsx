@@ -29,6 +29,8 @@ const RegisterForm = () => {
     }
     // const form = document.getElementById("form");
     // form.reset();
+
+    // await navigate("/", { replace: true });
   };
 
   return <SignupForm handleSubmit={handleSubmit} />;

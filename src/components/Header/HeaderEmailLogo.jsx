@@ -3,14 +3,11 @@ import { useSelector } from "react-redux";
 import { selectUserName } from "../../redux/auth/selectors";
 
 const HeaderEmailLogo = () => {
-  const email = useSelector(selectUserName);
-  const firstLetterOfEmail = email.charAt(0).toUpperCase();
+  const { name } = useSelector(selectUserName);
+  console.log(name);
+  const firstLetterOfEmail = name.charAt(0).toUpperCase();
 
-  return (
-    <>
-      <p className="header-nav-email">{firstLetterOfEmail}</p>
-    </>
-  );
+  return <>{<p className="header-nav-email">{firstLetterOfEmail}</p>}</>;
 };
 
 export default HeaderEmailLogo;

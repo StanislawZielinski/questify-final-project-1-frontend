@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import Notiflix from "notiflix";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-import Form from "../Form/Form";
+import SignupForm from "../Form/SignupForm";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -11,8 +11,8 @@ const RegisterForm = () => {
     e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const name = "Stachu";
-    const canRegister = [email, password].every(Boolean);
+    const name = document.getElementById("name").value;
+    const canRegister = [name, email, password].every(Boolean);
     const credentials = { name, email, password };
     if (canRegister) {
       try {
@@ -31,7 +31,7 @@ const RegisterForm = () => {
     // form.reset();
   };
 
-  return <Form handleSubmit={handleSubmit} />;
+  return <SignupForm handleSubmit={handleSubmit} />;
 };
 
 export default RegisterForm;

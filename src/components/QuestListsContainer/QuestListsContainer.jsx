@@ -12,7 +12,8 @@ const QuestListsContainer = () => {
   const [paragraphValue, setParagraphValue] = useState(" ");
   // const storage = JSON.parse(localStorage.getItem("quest"));
   const dispatch = useDispatch();
-  const tasks = useSelector(tasksSelector);
+  const { tasks } = useSelector(tasksSelector);
+  console.log(tasks);
   useEffect(() => {
     dispatch(fetchCards());
   }, [dispatch]);
@@ -33,10 +34,9 @@ const QuestListsContainer = () => {
         />
       )}
       {/* render quests from storage should be from API*/}
-      {/* {tasks?.map(({_id}) => {
-        console.log(task);
+      {tasks?.map(({ _id }) => {
         return <CardForm key={_id} tasks={tasks} />;
-      })} */}
+      })}
       <h2 className={styles.today}>TOMORROW</h2>
       <AddButton createNewQuest={handleClick} />
     </div>

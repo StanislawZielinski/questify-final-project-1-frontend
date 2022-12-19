@@ -15,7 +15,7 @@ import {
   registerSuccess,
 } from "./actions";
 // THIS IS JUST EXAMPLE URL CHANGE IT FOR JAKUB API - AWAITING FOR BACKEND
-axios.defaults.baseURL = "https://backend-questify.herokuapp.com";
+axios.defaults.baseURL = "https://backend-questify.herokuapp.com/api";
 //add JWT
 const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -28,7 +28,7 @@ const removeAuthToken = () => {
 export const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
   try {
-    const { data } = await axios.post("/api/auth/signup", credentials);
+    const { data } = await axios.post("/auth/signup", credentials);
     setAuthToken(data.token);
     dispatch(registerSuccess(data));
   } catch (error) {
@@ -41,7 +41,7 @@ export const register = (credentials) => async (dispatch) => {
 export const login = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const { data } = await axios.post("/api/auth/login", credentials);
+    const { data } = await axios.post("/auth/login", credentials);
     setAuthToken(data.token);
     dispatch(loginSuccess(data));
   } catch (error) {
@@ -53,7 +53,7 @@ export const login = (credentials) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch(logoutRequest());
   try {
-    await axios.get("/api/auth/logout");
+    await axios.get("/auth/logout");
     removeAuthToken();
     dispatch(logoutSuccess());
   } catch (error) {

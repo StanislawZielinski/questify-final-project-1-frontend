@@ -4,7 +4,8 @@ import { selectUserName } from "../../redux/auth/selectors";
 
 const HeaderEmailLogo = () => {
   const email = useSelector(selectUserName);
-  const firstLetterOfEmail = email.charAt(0).toUpperCase();
+  const firstLetterOfEmail =
+    email[0] === undefined ? "?" : email[0].charAt(0).toUpperCase();
 
   return (
     <>

@@ -29,14 +29,12 @@ export const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
   try {
     const { data } = await axios.post("/api/auth/signup", credentials);
-    // setAuthToken(data.token);
+    setAuthToken(data.token);
     dispatch(registerSuccess(data));
   } catch (error) {
     dispatch(registerError(error.message));
-    // const displayedError = error.message
     Notify.failure("Please check your email and password");
   }
-  // navigate("/", { replace: true });
 };
 
 //post user/login

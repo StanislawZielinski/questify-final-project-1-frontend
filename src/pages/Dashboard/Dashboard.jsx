@@ -4,7 +4,6 @@ import { QuestListsContainer } from "../../components/QuestListsContainer/QuestL
 function Dashboard() {
   return (
     <>
-      <div>DASHBOARD!!!</div>
       <QuestListsContainer />
     </>
   );

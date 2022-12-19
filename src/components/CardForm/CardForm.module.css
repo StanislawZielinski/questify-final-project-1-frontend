@@ -1,6 +1,7 @@
 .card {
   background: #ffffff;
-  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03), 3px 4px 4px rgba(21, 57, 90, 0.03);
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
   transition: all 0.2s ease-in-out;
 }
@@ -29,12 +30,12 @@
   fill: #00d7ff;
   border-radius: 50%;
   -webkit-animation: svg-shadow 1.5s ease infinite alternate;
-          animation: svg-shadow 1.5s ease infinite alternate;
+  animation: svg-shadow 1.5s ease infinite alternate;
 }
 .card .formTop .checkbox:checked + .checkmark {
   fill: rgb(185, 195, 200);
   -webkit-animation: svg-shadow-done 1.5s ease infinite alternate;
-          animation: svg-shadow-done 1.5s ease infinite alternate;
+  animation: svg-shadow-done 1.5s ease infinite alternate;
 }
 .card .formMiddle .info {
   color: #b9c3c8;
@@ -106,57 +107,73 @@
 
 @-webkit-keyframes svg-shadow {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(0, 217, 255, 0.3)) drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(0, 217, 255, 0.3))
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(0, 217, 255, 0.6)) drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.6))
+      drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
   }
 }
 
 @keyframes svg-shadow {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(0, 217, 255, 0.3)) drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(0, 217, 255, 0.3))
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(0, 217, 255, 0.6)) drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.6))
+      drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
   }
 }
 @-webkit-keyframes svg-shadow-done {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(185, 195, 200, 0.3)) drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(185, 195, 200, 0.3))
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(185, 195, 200, 0.6)) drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.6))
+      drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
   }
 }
 @keyframes svg-shadow-done {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(185, 195, 200, 0.3)) drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(185, 195, 200, 0.3))
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(185, 195, 200, 0.6)) drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.6))
+      drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
   }
 }
-[value=Easy],
-[value=Normal],
-[value=Hard] {
+[value="Easy"],
+[value="Normal"],
+[value="Hard"] {
   outline: none;
   border: none;
   background-color: transparent;
   font-weight: 400;
   -webkit-animation: blink-easy 0.5s;
-          animation: blink-easy 0.5s;
+  animation: blink-easy 0.5s;
 }
 
-[value=Easy] {
+[value="Easy"] {
   color: green;
 }
 
-[value=Normal] {
+[value="Normal"] {
   color: orange;
 }
 
-[value=Hard] {
+[value="Hard"] {
   color: red;
 }
 
@@ -197,7 +214,7 @@
     width: 0;
   }
 }
-[type=datetime-local] {
+[type="datetime-local"] {
   outline: none;
   border: none;
   display: block;
@@ -205,30 +222,31 @@
 }
 
 ::-webkit-calendar-picker-indicator {
-  filter: invert(78%) sepia(49%) saturate(5346%) hue-rotate(148deg) brightness(102%) contrast(108%);
+  filter: invert(78%) sepia(49%) saturate(5346%) hue-rotate(148deg)
+    brightness(102%) contrast(108%);
 }
 
-[value=STUFF] {
+[value="STUFF"] {
   background-color: #b9c3c8;
 }
 
-[value=FAMILY] {
+[value="FAMILY"] {
   background-color: #ffe6d3;
 }
 
-[value=HEALTH] {
+[value="HEALTH"] {
   background-color: #cdf7ff;
 }
 
-[value=LEARNING] {
+[value="LEARNING"] {
   background-color: #fff6c0;
 }
 
-[value=LEISURE] {
+[value="LEISURE"] {
   background-color: #f8d2ff;
 }
 
-[value=WORK] {
+[value="WORK"] {
   background-color: #d3f6ce;
 }
 
@@ -253,23 +271,23 @@
     font-size: 14px;
     line-height: 14px;
   }
-  [value=Easy],
-[value=Normal],
-[value=Hard] {
+  [value="Easy"],
+  [value="Normal"],
+  [value="Hard"] {
     font-size: 16px;
     line-height: 16px;
   }
-  input[type=datetime-local] {
+  input[type="datetime-local"] {
     font-size: 18px;
     line-height: 18px;
     margin: 0 auto 34px auto;
   }
-  [value=STUFF],
-[value=FAMILY],
-[value=HEALTH],
-[value=LEARNING],
-[value=LEISURE],
-[value=WORK] {
+  [value="STUFF"],
+  [value="FAMILY"],
+  [value="HEALTH"],
+  [value="LEARNING"],
+  [value="LEISURE"],
+  [value="WORK"] {
     width: 120px;
     height: 35px;
     font-size: 14px;
@@ -297,26 +315,26 @@
     font-size: 11px;
     line-height: 11px;
   }
-  [value=Easy],
-[value=Normal],
-[value=Hard] {
+  [value="Easy"],
+  [value="Normal"],
+  [value="Hard"] {
     font-size: 14px;
     line-height: 14px;
   }
-  input[type=datetime-local] {
+  input[type="datetime-local"] {
     font-size: 14px;
     line-height: 14px;
     margin: 0 auto 40px auto;
   }
-  [value=STUFF],
-[value=FAMILY],
-[value=HEALTH],
-[value=LEARNING],
-[value=LEISURE],
-[value=WORK] {
+  [value="STUFF"],
+  [value="FAMILY"],
+  [value="HEALTH"],
+  [value="LEARNING"],
+  [value="LEISURE"],
+  [value="WORK"] {
     width: 88px;
     height: 25px;
     font-size: 11px;
     line-height: 11px;
   }
-}/*# sourceMappingURL=CardForm.module.css.map */
+} /*# sourceMappingURL=CardForm.module.css.map */

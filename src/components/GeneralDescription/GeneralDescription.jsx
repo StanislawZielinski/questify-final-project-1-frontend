@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./GeneralDescription.scss";
 const GeneralDescription = () => {
   return (
@@ -8,7 +9,13 @@ const GeneralDescription = () => {
         Questify will turn your life into a thrilling game full of amazing
         quests and exciting challenges.
       </p>
-      <p className="login-info">Choose your name to sign up or log in</p>
+      <p className="login-info">
+        Choose your name to{" "}
+        <Link to="/signup" className="login-info-signup">
+          sign up
+        </Link>{" "}
+        or log in
+      </p>
     </>
   );
 };

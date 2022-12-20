@@ -38,10 +38,9 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
   const progressRef = useRef();
   const nameRef = useRef();
   const dateRef = useRef();
-  // const { name, date, level, group, progress } = tasks;
+  const { name, date, level, group, progress, id } = tasks;
   const [isActive, setIsActive] = useState(false);
   const isCreateNew = paragraphValue === "CREATE NEW QUEST";
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -56,6 +55,21 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
     console.clear();
     setIsActive(false);
   };
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    if (id) {
+      const data = {
+        id,
+        level: levelRef.current.value,
+        group: groupRef.current.value,
+        progress: progressRef.current.checked,
+        name: nameRef.current.value,
+        date: dateRef.current.value,
+      };
+      onSubmit(data);
+    }
+    setIsActive(false);
+  };
   const handleClick = () => {
     !isActive ? setIsActive(true) : setIsActive(false);
   };
@@ -63,7 +77,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
     <>
       {/* form for edit - patch */}
       {!isCreateNew && isActive && (
-        <form className={styles.card} onSubmit={handleSubmit}>
+        <form className={styles.card} onSubmit={handleUpdate}>
           <div className={styles.formTop}>
             <div>
               <div id="levelDot" className="easyDot" />
@@ -144,7 +158,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
             <div>
               <div id="levelDot" className="easyDot" />
               <p className={styles.easy} id="levelBtn">
-                {tasks.level}
+                {level}
               </p>
             </div>
             <label>
@@ -152,7 +166,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 className={styles.checkbox}
                 type="checkbox"
                 ref={progressRef}
-                name={tasks.progress}
+                name={progress}
               />
               <svg
                 className={styles.checkmark}
@@ -164,12 +178,12 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
           </div>
           <div className={styles.formMiddle}>
             <p className={styles.info}> </p>
-            <p className={styles.name}>{tasks.name}</p>
-            <p className={styles.date}>{tasks.date}</p>
+            <p className={styles.name}>{name}</p>
+            <p className={styles.date}>{date}</p>
           </div>
           <div className={styles.formBottom}>
             <p className={styles.groupBtn} id="groupBtn">
-              {tasks.group}
+              {group}
             </p>
           </div>
         </form>

@@ -23,6 +23,13 @@ const QuestListsContainer = () => {
     setStorage([values, ...storage]);
     setIsisCreateNew(false);
   };
+  const tasksUpdate = (values) => {
+    const updatedTask = storage.map((task) =>
+      task.id === values.id ? values : task
+    );
+    setStorage(updatedTask);
+    console.log(storage);
+  };
   return (
     <div className={styles.questListsContainer}>
       <h2 className={styles.today}>TODAY</h2>
@@ -36,9 +43,8 @@ const QuestListsContainer = () => {
         />
       )}
       {/* render quests from storage */}
-      {/* update on Submit */}
       {storage?.map((task) => (
-        <CardForm key={task.id} tasks={storage} />
+        <CardForm key={task.id} tasks={task} onSubmit={tasksUpdate} />
       ))}
       <h2 className={styles.today}>TOMORROW</h2>
       <AddButton createNewQuest={handleClick} />

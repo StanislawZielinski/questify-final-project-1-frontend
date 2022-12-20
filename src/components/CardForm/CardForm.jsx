@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addCard } from "../../redux/cards/operations";
+import { useRef, useState } from "react";
 import styles from "./CardForm.module.css";
 import "./LevelDot.css";
 
@@ -34,36 +32,29 @@ const switchGroup = () => {
     group.value = "STUFF";
   }
 };
-const CardForm = ({ tasks, paragraphValue, onClick }) => {
+const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
   const levelRef = useRef();
   const groupRef = useRef();
   const progressRef = useRef();
   const nameRef = useRef();
   const dateRef = useRef();
-  const { name, date, level, group, progress } = tasks;
+  // const { name, date, level, group, progress } = tasks;
   const [isActive, setIsActive] = useState(false);
-  const [questArr, setQuestArr] = useState([]);
   const isCreateNew = paragraphValue === "CREATE NEW QUEST";
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const json = JSON.stringify(questArr);
-    localStorage.setItem("quest", json);
-    console.log(json);
-  }, [questArr]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      _id: Date.now(),
+      id: Date.now(),
       level: levelRef.current.value,
       group: groupRef.current.value,
       progress: progressRef.current.checked,
       name: nameRef.current.value,
       date: dateRef.current.value,
     };
-    setQuestArr([...questArr, data]);
+    onSubmit(data);
     console.clear();
     setIsActive(false);
-    return dispatch(addCard(data));
   };
   const handleClick = () => {
     !isActive ? setIsActive(true) : setIsActive(false);
@@ -153,7 +144,7 @@ const CardForm = ({ tasks, paragraphValue, onClick }) => {
             <div>
               <div id="levelDot" className="easyDot" />
               <p className={styles.easy} id="levelBtn">
-                {level}
+                {tasks.level}
               </p>
             </div>
             <label>
@@ -161,7 +152,7 @@ const CardForm = ({ tasks, paragraphValue, onClick }) => {
                 className={styles.checkbox}
                 type="checkbox"
                 ref={progressRef}
-                name={progress}
+                name={tasks.progress}
               />
               <svg
                 className={styles.checkmark}
@@ -173,12 +164,12 @@ const CardForm = ({ tasks, paragraphValue, onClick }) => {
           </div>
           <div className={styles.formMiddle}>
             <p className={styles.info}> </p>
-            <p className={styles.name}>{name}</p>
-            <p className={styles.date}>{date}</p>
+            <p className={styles.name}>{tasks.name}</p>
+            <p className={styles.date}>{tasks.date}</p>
           </div>
           <div className={styles.formBottom}>
             <p className={styles.groupBtn} id="groupBtn">
-              {group}
+              {tasks.group}
             </p>
           </div>
         </form>
@@ -196,7 +187,6 @@ const CardForm = ({ tasks, paragraphValue, onClick }) => {
                 onClick={switchLevel}
                 value={"Easy"}
                 ref={levelRef}
-                name={level}
               />
             </div>
             <label>
@@ -204,7 +194,6 @@ const CardForm = ({ tasks, paragraphValue, onClick }) => {
                 className={styles.checkbox}
                 type="checkbox"
                 ref={progressRef}
-                name={progress}
               />
               <svg
                 className={styles.checkmark}
@@ -216,17 +205,11 @@ const CardForm = ({ tasks, paragraphValue, onClick }) => {
           </div>
           <div className={styles.formMiddle}>
             <p className={styles.info}>{paragraphValue}</p>
-            <input
-              className={styles.name}
-              type="text"
-              ref={nameRef}
-              name={name}
-            />
+            <input className={styles.name} type="text" ref={nameRef} />
             <input
               className={styles.date}
               type="datetime-local"
               ref={dateRef}
-              name={date}
             />
           </div>
           <div className={styles.formBottom}>
@@ -236,7 +219,6 @@ const CardForm = ({ tasks, paragraphValue, onClick }) => {
               id="groupBtn"
               onClick={switchGroup}
               value={"STUFF"}
-              name={group}
               ref={groupRef}
             />
             <div className={styles.options}>

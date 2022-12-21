@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   background: #ffffff;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
@@ -69,6 +70,7 @@
 }
 .card .formBottom .groupBtn:hover {
   transform: scale(1.1);
+  translate: 5%;
 }
 .card .formBottom .options {
   margin-right: 20px;

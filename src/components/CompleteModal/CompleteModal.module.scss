@@ -1,0 +1,36 @@
+.modalBackdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.completeModal {
+  background-color: #fff;
+  & .info {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 11px;
+    color: red;
+    & span {
+      background-color: red;
+      color: #00d7ff;
+      text-decoration: underline;
+    }
+  }
+  & .continue {
+    color: red;
+    & .continueArrow {
+      color: red;
+    }
+  }
+}

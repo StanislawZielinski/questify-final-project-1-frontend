@@ -2,13 +2,20 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { PublicRoute } from "../src/components/Routes/PublicRoute";
 import { PrivateRoute } from "../src/components/Routes/PrivateRoute";
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "./redux/auth/operations";
 import SharedLayout from "./pages/SharedLayout/SharedLayout";
 const Signup = lazy(() => import("./pages/Signup/Signup"));
 const Home = lazy(() => import("./pages/Home/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return (
     <div>
       <Routes>

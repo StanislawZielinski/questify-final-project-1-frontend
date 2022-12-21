@@ -38,7 +38,8 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
   const progressRef = useRef();
   const nameRef = useRef();
   const dateRef = useRef();
-  const { name, date, level, group, progress, id } = tasks;
+  const { name, date, level, group, progress, _id } = tasks;
+  console.log(tasks);
   const [isActive, setIsActive] = useState(false);
   const isCreateNew = paragraphValue === "CREATE NEW QUEST";
   const handleSubmit = (e) => {
@@ -52,14 +53,16 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
       date: dateRef.current.value,
     };
     onSubmit(data);
-    console.clear();
+    // console.clear();
     setIsActive(false);
   };
   const handleUpdate = (e) => {
     e.preventDefault();
-    if (id) {
+    console.log("updateTask");
+    console.log(_id);
+    if (_id) {
       const data = {
-        id,
+        _id,
         level: levelRef.current.value,
         group: groupRef.current.value,
         progress: progressRef.current.checked,
@@ -67,6 +70,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
         date: dateRef.current.value,
       };
       onSubmit(data);
+      console.log("updateTask2");
     }
     setIsActive(false);
   };

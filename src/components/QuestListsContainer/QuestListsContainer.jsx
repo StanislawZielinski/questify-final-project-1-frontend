@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CardForm } from "../CardForm/CardForm";
 import { AddButton } from "../AddButton/AddButton";
 import { fetchCards } from "../../redux/cards/operations";
+import { editCard } from "../../redux/cards/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksSelector } from "../../redux/cards/selectors";
 
@@ -32,16 +33,20 @@ const QuestListsContainer = () => {
   // }, [storage]);
 
   const tasksSubmit = (values) => {
+    console.log("newTask");
     setStorage([values, ...storage]);
     setIsisCreateNew(false);
   };
 
   const tasksUpdate = (values) => {
+    console.log("click");
     const updatedTask = tasks.map((task) =>
       task.id === values.id ? values : task
     );
     // send to api
-    setStorage(updatedTask);
+    dispatch(editCard(updatedTask));
+    // to storage
+    // setStorage(updatedTask);
     console.log(storage);
   };
 
@@ -62,7 +67,12 @@ const QuestListsContainer = () => {
         <CardForm key={task.id} tasks={task} onSubmit={tasksUpdate} />
       ))} */}
       {tasks?.map((task) => (
-        <CardForm key={task._id} tasks={task} onSubmit={tasksUpdate} />
+        <CardForm
+          key={task._id}
+          tasks={task}
+          onSubmit={tasksUpdate}
+          id={task._id}
+        />
       ))}
       <h2 className={styles.today}>TOMORROW</h2>
       <AddButton createNewQuest={handleClick} />

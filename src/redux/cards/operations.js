@@ -41,6 +41,7 @@ export const deleteCard = createAsyncThunk(
 export const editCard = createAsyncThunk("cards/editCard", async (cardId) => {
   try {
     const { data } = await axios.patch(`/tasks/${cardId}`);
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error.message);

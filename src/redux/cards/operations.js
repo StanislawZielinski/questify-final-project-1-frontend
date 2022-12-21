@@ -38,14 +38,11 @@ export const deleteCard = createAsyncThunk(
     }
   }
 );
-export const editCard = createAsyncThunk(
-  "/api/cards/editCard",
-  async (cardId) => {
-    try {
-      const { data } = await axios.patch(`/tasks/${cardId}`);
-      return data;
-    } catch (error) {
-      console.error(error.message);
-    }
+export const editCard = createAsyncThunk("cards/editCard", async (cardId) => {
+  try {
+    const { data } = await axios.patch(`/tasks/${cardId}`);
+    return data;
+  } catch (error) {
+    console.error(error.message);
   }
-);
+});

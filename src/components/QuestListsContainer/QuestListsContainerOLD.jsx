@@ -6,13 +6,14 @@ import { fetchCards } from "../../redux/cards/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksSelector } from "../../redux/cards/selectors";
 
-const QuestListsContainer = () => {
+const QuestListsContainerOLD = () => {
   const [isCreateNew, setIsisCreateNew] = useState(false);
   const [quests, setQuests] = useState([]);
   const [paragraphValue, setParagraphValue] = useState(" ");
   // const storage = JSON.parse(localStorage.getItem("quest"));
   const dispatch = useDispatch();
   const { tasks } = useSelector(tasksSelector);
+  console.log(tasks);
   console.log(tasks);
   useEffect(() => {
     dispatch(fetchCards());
@@ -34,8 +35,8 @@ const QuestListsContainer = () => {
         />
       )}
       {/* render quests from storage should be from API*/}
-      {tasks?.map(({ _id }) => {
-        return <CardForm key={_id} tasks={tasks} />;
+      {tasks?.map((task) => {
+        return <CardForm key={task._id} tasks={task} />;
       })}
       <h2 className={styles.today}>TOMORROW</h2>
       <AddButton createNewQuest={handleClick} />
@@ -43,4 +44,4 @@ const QuestListsContainer = () => {
   );
 };
 
-// export { QuestListsContainer };
+export { QuestListsContainerOLD };

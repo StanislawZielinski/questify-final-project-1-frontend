@@ -69,7 +69,7 @@ export const refreshUser = () => async (dispatch, getState) => {
   setAuthToken(persistedToken);
   dispatch(getUserRequest());
   try {
-    const { data } = await axios.get("/users/current");
+    const { data } = await axios.get("/auth/current");
     dispatch(getUserSuccess(data));
   } catch (error) {
     dispatch(getUserError(error.message));

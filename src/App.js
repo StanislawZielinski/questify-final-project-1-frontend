@@ -11,6 +11,11 @@ const Home = lazy(() => import("./pages/Home/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return (
     <div>
       <Routes>

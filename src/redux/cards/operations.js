@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// axios.defaults.baseURL = "https://backend-questify.herokuapp.com/api";
+axios.defaults.baseURL = "https://backend-questify.herokuapp.com/api";
 export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
   try {
     const { data } = await axios.get("/tasks");

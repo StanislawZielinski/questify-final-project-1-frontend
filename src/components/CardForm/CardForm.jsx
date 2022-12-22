@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
-import { switchLevelForm, switchGroupForm, switchLevelEdit, switchGroupEdit } from './helpers'
+import {
+  switchLevelForm,
+  switchGroupForm,
+  switchLevelEdit,
+  switchGroupEdit,
+} from "./helpers";
 import { CancelModal } from "../CancelModal/CancelModal";
 import { CompleteModal } from "../CompleteModal/CompleteModal";
 import styles from "./CardForm.module.css";
@@ -55,7 +60,11 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
       {/* EDIT - form for edit - patch */}
       {!isCreateNew && isActive && (
         <div className={styles.editMode}>
-          <form id="cardEdit" className={styles.cardEdit} onSubmit={handleUpdate}>
+          <form
+            id="cardEdit"
+            className={styles.cardEdit}
+            onSubmit={handleUpdate}
+          >
             <div className={styles.formTop}>
               <div>
                 <div id="levelDot" className="easyDot" />
@@ -100,7 +109,6 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 type="button"
                 id="groupBtn"
                 onClick={switchGroupEdit}
-                value={"STUFF"}
                 ref={groupRef}
               />
               <div className={styles.options}>
@@ -156,7 +164,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
           <form className={styles.card} onClick={handleClick}>
             <div className={styles.formTop}>
               <div>
-                <div id="levelDot" className={level.toLowerCase()+'Dot'} />
+                <div id="levelDot" className={level.toLowerCase() + "Dot"} />
                 <p className={styles.easy} id="levelBtn" value={level}>
                   {level}
                 </p>

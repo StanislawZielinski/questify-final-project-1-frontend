@@ -1,7 +1,13 @@
 import styles from "./CancelModal.module.css";
 
-const CancelModal = ({ children, shownCancelModal, closeCancelModal }) => {
-  return shownCancelModal ? (
+const CancelModal = ({
+  closeCancelModal,
+  handleDelete,
+  tasks,
+  shownCancelModal,
+}) => {
+  const { id } = tasks;
+  return (
     <div className={styles.modalBackdrop}>
       <div
         className={styles.cancelModal}
@@ -12,15 +18,21 @@ const CancelModal = ({ children, shownCancelModal, closeCancelModal }) => {
         <p className={styles.info}>Delete this Quest?</p>
 
         <div className={styles.options}>
-          <button className={styles.cancel} onClick={closeCancelModal}>
+          <button
+            type="button"
+            className={styles.cancel}
+            onClick={() => closeCancelModal()}
+          >
             CANCEL
           </button>
           <span>|</span>
-          <button className={styles.delete}>DELETE</button>
+          <button className={styles.delete} onClick={() => handleDelete(id)}>
+            DELETE
+          </button>
         </div>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export { CancelModal };

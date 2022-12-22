@@ -16,6 +16,7 @@ const CardForm = ({
   closeCard,
   onSubmit,
   handleDelete,
+  renderDone,
 }) => {
   const [cancelModalShown, toggleCancelModal] = useState(false);
   const [completeModalShown, toggleCompleteModal] = useState(false);
@@ -156,9 +157,9 @@ const CardForm = ({
             <CompleteModal
               shownCompleteModal={completeModalShown}
               tasks={tasks}
-              closeCompleteModal={() => {
-                toggleCompleteModal(false);
-              }}
+              closeCompleteModal={() =>
+                toggleCompleteModal(false) & setIsActive(false)
+              }
             />
             {cancelModalShown && (
               <CancelModal

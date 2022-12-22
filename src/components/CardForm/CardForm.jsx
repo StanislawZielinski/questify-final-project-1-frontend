@@ -60,7 +60,6 @@ const CardForm = ({
   const handleClick = () => {
     !isActive ? setIsActive(true) : setIsActive(false);
   };
-
   return (
     <>
       {/* EDIT - form for edit - patch */}
@@ -79,7 +78,7 @@ const CardForm = ({
                   id="levelBtn"
                   type="button"
                   onClick={switchLevelEdit}
-                  value={"Easy"}
+                  defaultValue={level || "Easy"}
                   ref={levelRef}
                 />
               </div>
@@ -102,11 +101,17 @@ const CardForm = ({
             </div>
             <div className={styles.formMiddle}>
               <p className={styles.info}>EDIT QUEST</p>
-              <input className={styles.name} type="text" ref={nameRef} />
+              <input
+                className={styles.name}
+                type="text"
+                ref={nameRef}
+                defaultValue={name}
+              />
               <input
                 className={styles.date}
                 type="datetime-local"
                 ref={dateRef}
+                defaultValue={date}
               />
             </div>
             <div className={styles.formBottom}>
@@ -115,8 +120,9 @@ const CardForm = ({
                 type="button"
                 id="groupBtn"
                 onClick={switchGroupEdit}
-                value={"STUFF"}
+                // value={"STUFF"}
                 ref={groupRef}
+                defaultValue={group || "STUFF"}
               />
               <div className={styles.options}>
                 <button
@@ -150,6 +156,7 @@ const CardForm = ({
             </div>
             <CompleteModal
               shownCompleteModal={completeModalShown}
+              tasks={tasks}
               closeCompleteModal={() => {
                 toggleCompleteModal(false);
               }}

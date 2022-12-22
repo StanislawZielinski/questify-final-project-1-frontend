@@ -10,7 +10,13 @@ import { CompleteModal } from "../CompleteModal/CompleteModal";
 import styles from "./CardForm.module.css";
 import "./LevelDot.css";
 
-const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
+const CardForm = ({
+  tasks,
+  paragraphValue,
+  closeCard,
+  onSubmit,
+  handleDelete,
+}) => {
   const [cancelModalShown, toggleCancelModal] = useState(false);
   const [completeModalShown, toggleCompleteModal] = useState(false);
 
@@ -54,7 +60,6 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
   const handleClick = () => {
     !isActive ? setIsActive(true) : setIsActive(false);
   };
-
   return (
     <>
       {/* EDIT - form for edit - patch */}
@@ -73,7 +78,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                   id="levelBtn"
                   type="button"
                   onClick={switchLevelEdit}
-                  value={"Easy"}
+                  defaultValue={level || "Easy"}
                   ref={levelRef}
                 />
               </div>
@@ -96,11 +101,17 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
             </div>
             <div className={styles.formMiddle}>
               <p className={styles.info}>EDIT QUEST</p>
-              <input className={styles.name} type="text" ref={nameRef} />
+              <input
+                className={styles.name}
+                type="text"
+                ref={nameRef}
+                defaultValue={name}
+              />
               <input
                 className={styles.date}
                 type="datetime-local"
                 ref={dateRef}
+                defaultValue={date}
               />
             </div>
             <div className={styles.formBottom}>
@@ -110,13 +121,13 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 id="groupBtn"
                 onClick={switchGroupEdit}
                 ref={groupRef}
+                defaultValue={group || "STUFF"}
               />
               <div className={styles.options}>
                 <button
+                  type="button"
                   className={styles.cancel}
-                  onClick={() => {
-                    toggleCancelModal(!cancelModalShown);
-                  }}
+                  onClick={() => toggleCancelModal(true)}
                 >
                   <svg
                     width="10"
@@ -142,22 +153,26 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 </button>
               </div>
             </div>
-
             <CompleteModal
               shownCompleteModal={completeModalShown}
+              tasks={tasks}
               closeCompleteModal={() => {
                 toggleCompleteModal(false);
               }}
             />
-            <CancelModal
-              shownCancelModal={cancelModalShown}
-              closeCancelModal={() => {
-                toggleCancelModal(false);
-              }}
-            />
+            {cancelModalShown && (
+              <CancelModal
+                closeCancelModal={() =>
+                  toggleCancelModal(false) & setIsActive(false)
+                }
+                handleDelete={handleDelete}
+                tasks={tasks}
+              />
+            )}
           </form>
         </div>
       )}
+
       {/* NEW CARD - fixed tags on fetch */}
       {!isCreateNew && !isActive && (
         <div key={id} id={id} className={styles.newCard}>
@@ -252,7 +267,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 <button
                   className={styles.cancel}
                   onClick={() => {
-                    toggleCancelModal(!cancelModalShown);
+                    closeCard();
                   }}
                 >
                   <svg
@@ -274,19 +289,6 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 </button>
               </div>
             </div>
-
-            <CompleteModal
-              shownCompleteModal={completeModalShown}
-              closeCompleteModal={() => {
-                toggleCompleteModal(false);
-              }}
-            />
-            <CancelModal
-              shownCancelModal={cancelModalShown}
-              closeCancelModal={() => {
-                toggleCancelModal(false);
-              }}
-            />
           </form>
         </div>
       )}

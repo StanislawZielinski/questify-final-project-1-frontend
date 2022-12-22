@@ -33,19 +33,21 @@ const QuestListsContainer = () => {
   return (
     <div className={styles.questListsContainer}>
       <h2 className={styles.today}>TODAY</h2>
-      {/* create new quest onClick */}
-      {isCreateNew && (
-        <CardForm
-          tasks={newQuest}
-          paragraphValue={paragraphValue}
-          onClick={() => setIsisCreateNew(false)}
-          onSubmit={tasksSubmit}
-        />
-      )}
-      {/* render quests from storage */}
-      {storage?.map((task) => (
-        <CardForm key={task.id} tasks={task} onSubmit={tasksUpdate} />
-      ))}
+      <div className={styles.cards}>
+        {/* create new quest onClick */}
+        {isCreateNew && (
+          <CardForm
+            tasks={newQuest}
+            paragraphValue={paragraphValue}
+            onClick={() => setIsisCreateNew(false)}
+            onSubmit={tasksSubmit}
+          />
+        )}
+        {/* render quests from storage */}
+        {storage?.map((task) => (
+          <CardForm key={task.id} tasks={task} onSubmit={tasksUpdate} />
+        ))}
+      </div>
       <h2 className={styles.today}>TOMORROW</h2>
       <AddButton createNewQuest={handleClick} />
     </div>

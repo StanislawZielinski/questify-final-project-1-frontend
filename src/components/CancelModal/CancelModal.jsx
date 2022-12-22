@@ -11,7 +11,7 @@ const CancelModal = ({
       <div
         className={styles.cancelModal}
         onClick={(e) => {
-          e.stopPropagation();
+          // e.stopPropagation();
         }}
       >
         <p className={styles.info}>Delete this Quest?</p>

@@ -5,11 +5,11 @@ const cards = createReducer([], {
   [fetchCards.fulfilled]: (_, { payload }) => {
     return payload;
   },
-  [addCard.fulfilled]: (state, { payload }) => [payload, ...state],
+  // [addCard.fulfilled]: (state, { payload }) => [payload, ...state],
   // check if edit works properly or if needs any modifications:
   // [editCard.fulfilled]: (state, { payload }) =>
   //   state.filter((card) => card.id === payload.id && [payload, ...state]),
-  [deleteCard.fulfilled]: (state, { payload }) => [payload, ...state],
+  // [deleteCard.fulfilled]: (state, { payload }) => [payload, ...state],
   // state.filter(({ _id: id }) => id !== payload.id),
 });
 const loading = createReducer(false, {

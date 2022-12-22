@@ -9,8 +9,8 @@ const cards = createReducer([], {
   // check if edit works properly or if needs any modifications:
   // [editCard.fulfilled]: (state, { payload }) =>
   //   state.filter((card) => card.id === payload.id && [payload, ...state]),
-  [deleteCard.fulfilled]: (state, { payload }) =>
-    state.filter(({ _id: id }) => id !== payload.id),
+  [deleteCard.fulfilled]: (state, { payload }) => [payload, ...state],
+  // state.filter(({ _id: id }) => id !== payload.id),
 });
 const loading = createReducer(false, {
   [fetchCards.pending]: () => true,

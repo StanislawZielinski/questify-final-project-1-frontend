@@ -1,11 +1,23 @@
 import { useRef, useState } from "react";
-import { switchLevelForm, switchGroupForm, switchLevelEdit, switchGroupEdit } from './helpers'
+import {
+  switchLevelForm,
+  switchGroupForm,
+  switchLevelEdit,
+  switchGroupEdit,
+} from "./helpers";
 import { CancelModal } from "../CancelModal/CancelModal";
 import { CompleteModal } from "../CompleteModal/CompleteModal";
 import styles from "./CardForm.module.css";
 import "./LevelDot.css";
 
-const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
+const CardForm = ({
+  tasks,
+  paragraphValue,
+  onClick,
+  onSubmitCreate,
+  onSubmitUpdate,
+  deleteQuest,
+}) => {
   const [cancelModalShown, toggleCancelModal] = useState(false);
   const [completeModalShown, toggleCompleteModal] = useState(false);
 
@@ -15,9 +27,9 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
   const nameRef = useRef();
   const dateRef = useRef();
   const { name, date, level, group, progress, _id } = tasks;
-  console.log(tasks);
   const [isActive, setIsActive] = useState(false);
   const isCreateNew = paragraphValue === "CREATE NEW QUEST";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -28,14 +40,14 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
       name: nameRef.current.value,
       date: dateRef.current.value,
     };
-    onSubmit(data);
+    onSubmitCreate(data);
     // console.clear();
     setIsActive(false);
   };
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log("updateTask");
-    console.log(_id);
+    // console.log("updateTask");
+    // console.log(_id);
     if (_id) {
       const data = {
         _id,
@@ -45,8 +57,8 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
         name: nameRef.current.value,
         date: dateRef.current.value,
       };
-      onSubmit(data);
-      console.log("updateTask2");
+      onSubmitUpdate(data);
+      // console.log("updateTask2");
     }
     setIsActive(false);
   };
@@ -59,7 +71,11 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
       {/* EDIT - form for edit - patch */}
       {!isCreateNew && isActive && (
         <div className={styles.editMode}>
-          <form id="cardEdit" className={styles.cardEdit} onSubmit={handleUpdate}>
+          <form
+            id="cardEdit"
+            className={styles.cardEdit}
+            onSubmit={handleUpdate}
+          >
             <div className={styles.formTop}>
               <div>
                 <div id="levelDot" className="easyDot" />
@@ -150,17 +166,18 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
               closeCancelModal={() => {
                 toggleCancelModal(false);
               }}
+              deleteQuest={deleteQuest}
             />
           </form>
         </div>
       )}
       {/* NEW CARD - fixed tags on fetch */}
       {!isCreateNew && !isActive && (
-        <div key={id} id={id} className={styles.newCard}>
+        <div key={_id} id={_id} className={styles.newCard}>
           <form className={styles.card} onClick={handleClick}>
             <div className={styles.formTop}>
               <div>
-                <div id="levelDot" className={level.toLowerCase()+'Dot'} />
+                <div id="levelDot" className={level.toLowerCase() + "Dot"} />
                 <p className={styles.easy} id="levelBtn" value={level}>
                   {level}
                 </p>

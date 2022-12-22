@@ -2,10 +2,10 @@ import styles from "./QuestListsContainer.module.css";
 import React, { useEffect, useState } from "react";
 import { CardForm } from "../CardForm/CardForm";
 import { AddButton } from "../AddButton/AddButton";
-import { fetchCards } from "../../redux/cards/operations";
-import { editCard } from "../../redux/cards/operations";
+import { fetchCards, addCard, deleteCard } from "../../redux/cards/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksSelector } from "../../redux/cards/selectors";
+import Notiflix from "notiflix";
 
 const QuestListsContainer = () => {
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const QuestListsContainer = () => {
   const [isCreateNew, setIsisCreateNew] = useState(false);
   const [newQuest, setNewQuest] = useState([]);
   const [paragraphValue, setParagraphValue] = useState(" ");
-  const [storage, setStorage] = useState(() => {
-    return JSON.parse(localStorage.getItem("quest")) || [];
-  });
+  // const [storage, setStorage] = useState(() => {
+  //   return JSON.parse(localStorage.getItem("quest")) || [];
+  // });
 
   const handleClick = () => {
     setIsisCreateNew(true);
@@ -31,25 +31,40 @@ const QuestListsContainer = () => {
   //   const json = JSON.stringify(storage);
   //   localStorage.setItem("quest", json);
   // }, [storage]);
-
+  function refreshPage() {
+    window.location.reload(false);
+  }
   const tasksSubmit = (values) => {
     console.log("newTask");
-    setStorage([values, ...storage]);
+    dispatch(addCard(values));
+    Notiflix.Loading.standard("wait...");
+    Notiflix.Loading.remove(3000);
     setIsisCreateNew(false);
+    // refreshPage();
+    // setStorage([values, ...storage]);
   };
 
   const tasksUpdate = (values) => {
-    console.log("click");
+    // console.log("click");
     const updatedTask = tasks.map((task) =>
-      task.id === values.id ? values : task
+      task._id === values.id ? values : task
     );
     // send to api
-    dispatch(editCard(updatedTask));
+    // console.log(updatedTask);
+    // dispatch(editCard(task._id));
     // to storage
     // setStorage(updatedTask);
-    console.log(storage);
+    // console.log(storage);
   };
-
+  const deleteQuest = (id) => {
+    console.log("deleteQuest");
+    console.log(id);
+    dispatch(deleteCard(id));
+    Notiflix.Loading.standard("wait...");
+    Notiflix.Loading.remove(2000);
+    setIsisCreateNew(false);
+    // refreshPage();
+  };
   return (
     <div className={styles.questListsContainer}>
       <h2 className={styles.today}>TODAY</h2>
@@ -60,7 +75,7 @@ const QuestListsContainer = () => {
             tasks={newQuest}
             paragraphValue={paragraphValue}
             onClick={() => setIsisCreateNew(false)}
-            onSubmit={tasksSubmit}
+            onSubmitCreate={tasksSubmit}
           />
         )}
         {/* render quests from storage */}
@@ -68,8 +83,9 @@ const QuestListsContainer = () => {
           <CardForm
             key={task._id}
             tasks={task}
-            onSubmit={tasksUpdate}
+            onSubmitUpdate={tasksUpdate}
             id={task._id}
+            deleteQuest={() => deleteQuest(task._id)}
           />
         ))}
       </div>

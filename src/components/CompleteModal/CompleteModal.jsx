@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./CompleteModal.module.css";
 import { CompleteSvg } from "./CompleteSvg";
 
-const name = "Przykładowa nazwa questa";
-
 const subString = (str) => {
   if (str.length < 18) {
     return str;
@@ -16,12 +14,16 @@ const CompleteModal = ({
   children,
   shownCompleteModal,
   closeCompleteModal,
+  tasks,
 }) => {
+  const { name } = tasks;
+  const title = name;
+
   return shownCompleteModal ? (
     <div className={styles.modalBackdrop}>
       <div className={styles.completeModal}>
         <p className={styles.info}>
-          COMPLETED: <span className={styles.name}>{subString(name)}</span>
+          COMPLETED: <span className={styles.name}>{subString(title)}</span>
         </p>
 
         <CompleteSvg />

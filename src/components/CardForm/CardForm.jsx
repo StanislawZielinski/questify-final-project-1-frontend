@@ -150,6 +150,7 @@ const CardForm = ({
             </div>
             <CompleteModal
               shownCompleteModal={completeModalShown}
+              tasks={tasks}
               closeCompleteModal={() => {
                 toggleCompleteModal(false);
               }}

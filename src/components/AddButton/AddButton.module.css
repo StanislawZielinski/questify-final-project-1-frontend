@@ -1,0 +1,34 @@
+.createNewTask {
+  width: 52px;
+  height: 52px;
+  left: 90vw;
+  bottom: 1rem;
+  border: none;
+  justify-content: flex-end;
+  border-radius: 50%;
+  background: rgb(255, 133, 28);
+  position: -webkit-sticky;
+  position: sticky;
+  -webkit-animation: svg-shadow 1.5s ease infinite alternate;
+          animation: svg-shadow 1.5s ease infinite alternate;
+  color: #fff;
+  font-size: 16px;
+}
+
+@-webkit-keyframes svg-shadow {
+  from {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255, 133, 28, 0.5)) drop-shadow(0 0 3px rgba(255, 133, 28, 0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(255, 133, 28, 0.8)) drop-shadow(0 0 4px rgba(255, 133, 28, 0.8));
+  }
+}
+
+@keyframes svg-shadow {
+  from {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255, 133, 28, 0.5)) drop-shadow(0 0 3px rgba(255, 133, 28, 0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(255, 133, 28, 0.8)) drop-shadow(0 0 4px rgba(255, 133, 28, 0.8));
+  }
+}/*# sourceMappingURL=AddButton.module.css.map */

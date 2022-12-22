@@ -1,11 +1,11 @@
-import "./AddButton.scss";
+import styles from "./AddButton.module.css";
 
 export const AddButton = ({ createNewQuest }) => {
   return (
     <button
-      className="button--create-new-task"
+      className={styles.createNewTask}
       type="button"
       onClick={() => createNewQuest()}
-    ></button>
+    >+</button>
   );
 };

@@ -1,0 +1,92 @@
+.modalBackdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: #15395a4d;
+  border-radius: 10px;
+}
+
+.cancelModal {
+  padding-top: 20px;
+  width: 163px;
+  height: 77px;
+  background-color: #fff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+  & .info {
+    font-weight: 550;
+    font-size: 12px;
+    line-height: 12px;
+    color: #282828;
+    text-align: center;
+  }
+  & .options {
+    text-align: center;
+    & .cancel {
+      position: relative;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 10px;
+      text-align: center;
+      color: #24d40c;
+      cursor: pointer;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #24d40c;
+        transform-origin: bottom midle;
+        transition: transform 0.25s ease-out;
+      }
+      &:hover::after {
+        transform: scaleX(0.8);
+        transform-origin: bottom midle;
+      }
+    }
+    & span {
+      color: #b9c3c8;
+    }
+    & .delete {
+      position: relative;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 10px;
+      text-align: center;
+      color: #db0938;
+      cursor: pointer;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #db0938;
+        transform-origin: bottom midle;
+        transition: transform 0.25s ease-out;
+      }
+      &:hover::after {
+        transform: scaleX(0.8);
+        transform-origin: bottom midle;
+      }
+    }
+  }
+}

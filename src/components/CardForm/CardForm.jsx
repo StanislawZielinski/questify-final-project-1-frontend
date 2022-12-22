@@ -1,11 +1,22 @@
 import { useRef, useState } from "react";
-import { switchLevelForm, switchGroupForm, switchLevelEdit, switchGroupEdit } from './helpers'
+import {
+  switchLevelForm,
+  switchGroupForm,
+  switchLevelEdit,
+  switchGroupEdit,
+} from "./helpers";
 import { CancelModal } from "../CancelModal/CancelModal";
 import { CompleteModal } from "../CompleteModal/CompleteModal";
 import styles from "./CardForm.module.css";
 import "./LevelDot.css";
 
-const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
+const CardForm = ({
+  tasks,
+  paragraphValue,
+  closeCard,
+  onSubmit,
+  handleDelete,
+}) => {
   const [cancelModalShown, toggleCancelModal] = useState(false);
   const [completeModalShown, toggleCompleteModal] = useState(false);
 
@@ -55,7 +66,11 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
       {/* EDIT - form for edit - patch */}
       {!isCreateNew && isActive && (
         <div className={styles.editMode}>
-          <form id="cardEdit" className={styles.cardEdit} onSubmit={handleUpdate}>
+          <form
+            id="cardEdit"
+            className={styles.cardEdit}
+            onSubmit={handleUpdate}
+          >
             <div className={styles.formTop}>
               <div>
                 <div id="levelDot" className="easyDot" />
@@ -105,10 +120,9 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
               />
               <div className={styles.options}>
                 <button
+                  type="button"
                   className={styles.cancel}
-                  onClick={() => {
-                    toggleCancelModal(!cancelModalShown);
-                  }}
+                  onClick={() => toggleCancelModal(true)}
                 >
                   <svg
                     width="10"
@@ -134,29 +148,32 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 </button>
               </div>
             </div>
-
             <CompleteModal
               shownCompleteModal={completeModalShown}
               closeCompleteModal={() => {
                 toggleCompleteModal(false);
               }}
             />
-            <CancelModal
-              shownCancelModal={cancelModalShown}
-              closeCancelModal={() => {
-                toggleCancelModal(false);
-              }}
-            />
+            {cancelModalShown && (
+              <CancelModal
+                closeCancelModal={() =>
+                  toggleCancelModal(false) & setIsActive(false)
+                }
+                handleDelete={handleDelete}
+                tasks={tasks}
+              />
+            )}
           </form>
         </div>
       )}
+
       {/* NEW CARD - fixed tags on fetch */}
       {!isCreateNew && !isActive && (
         <div key={id} id={id} className={styles.newCard}>
           <form className={styles.card} onClick={handleClick}>
             <div className={styles.formTop}>
               <div>
-                <div id="levelDot" className={level.toLowerCase()+'Dot'} />
+                <div id="levelDot" className={level.toLowerCase() + "Dot"} />
                 <p className={styles.easy} id="levelBtn" value={level}>
                   {level}
                 </p>
@@ -244,7 +261,7 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 <button
                   className={styles.cancel}
                   onClick={() => {
-                    toggleCancelModal(!cancelModalShown);
+                    closeCard();
                   }}
                 >
                   <svg
@@ -266,19 +283,6 @@ const CardForm = ({ tasks, paragraphValue, onClick, onSubmit }) => {
                 </button>
               </div>
             </div>
-
-            <CompleteModal
-              shownCompleteModal={completeModalShown}
-              closeCompleteModal={() => {
-                toggleCompleteModal(false);
-              }}
-            />
-            <CancelModal
-              shownCancelModal={cancelModalShown}
-              closeCancelModal={() => {
-                toggleCancelModal(false);
-              }}
-            />
           </form>
         </div>
       )}

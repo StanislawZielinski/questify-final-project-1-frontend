@@ -19,8 +19,8 @@ const CompleteModal = ({
 }) => {
   return shownCompleteModal ? (
     <div className={styles.modalBackdrop}>
-      <div classname={styles.completeModal}>
-        <p classname={styles.info}>
+      <div className={styles.completeModal}>
+        <p className={styles.info}>
           COMPLETED: <span className={styles.name}>{subString(name)}</span>
         </p>
 

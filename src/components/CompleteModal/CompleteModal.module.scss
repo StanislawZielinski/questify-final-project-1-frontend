@@ -16,21 +16,46 @@
 
 .completeModal {
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   & .info {
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 11px;
-    color: red;
-    & span {
-      background-color: red;
+    color: #000;
+    & .name {
       color: #00d7ff;
       text-decoration: underline;
     }
   }
   & .continue {
-    color: red;
+    color: #b9c3c8;
+    font-weight: 400;
     & .continueArrow {
-      color: red;
+      color: #00d7ff;
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .completeModal {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    & .continue {
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .completeModal {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 11px;
+    & .continue {
+      font-size: 12px;
+      line-height: 12px;
     }
   }
 }

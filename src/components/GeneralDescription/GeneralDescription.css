@@ -52,8 +52,10 @@
     font-size: 24px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .description {
     font-size: 36px;
   }
-}/*# sourceMappingURL=GeneralDescription.css.map */
+}
+/*# sourceMappingURL=GeneralDescription.css.map */

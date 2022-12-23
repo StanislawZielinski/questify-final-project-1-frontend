@@ -1,11 +1,6 @@
 import styles from "./CancelModal.module.css";
 
-const CancelModal = ({
-  closeCancelModal,
-  handleDelete,
-  tasks,
-  shownCancelModal,
-}) => {
+const CancelModal = ({ closeCancelModal, handleDelete, tasks }) => {
   const { id } = tasks;
   return (
     <div className={styles.modalBackdrop}>

@@ -1,28 +1,36 @@
 .cardForm,
 .cardEdit,
-.newCard {
+.newCard,
+.challange {
   position: relative;
   background: #ffffff;
-  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03), 3px 4px 4px rgba(21, 57, 90, 0.03);
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
   transition: all 0.2s ease-in-out;
   margin: 14px;
 }
+.challange {
+  background-color: #15395a;
+}
 .cardForm:hover,
 .cardEdit:hover,
-.newCard:hover {
+.newCard:hover,
+.challange:hover {
   transform: scale(1.02);
 }
 .cardForm .formTop,
 .cardEdit .formTop,
-.newCard .formTop {
+.newCard .formTop,
+.challange .formTop {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
 }
 .cardForm .formTop .checkbox,
 .cardEdit .formTop .checkbox,
-.newCard .formTop .checkbox {
+.newCard .formTop .checkbox,
+.challange .formTop .checkbox {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -41,18 +49,28 @@
   fill: #00d7ff;
   border-radius: 50%;
   -webkit-animation: svg-shadow 1.5s ease infinite alternate;
-          animation: svg-shadow 1.5s ease infinite alternate;
+  animation: svg-shadow 1.5s ease infinite alternate;
+}
+.challange .formTop .checkmark {
+  width: 29px;
+  height: 29px;
+  display: inline-block;
+  margin-right: 20px;
+  position: relative;
+  vertical-align: middle;
 }
 .cardForm .formTop .checkbox:checked + .checkmark,
 .cardEdit .formTop .checkbox:checked + .checkmark,
-.newCard .formTop .checkbox:checked + .checkmark {
+.newCard .formTop .checkbox:checked + .checkmark,
+.challange .formTop .checkbox:checked + .checkmark {
   fill: rgb(185, 195, 200);
   -webkit-animation: svg-shadow-done 1.5s ease infinite alternate;
-          animation: svg-shadow-done 1.5s ease infinite alternate;
+  animation: svg-shadow-done 1.5s ease infinite alternate;
 }
 .cardForm .formMiddle .info,
 .cardEdit .formMiddle .info,
-.newCard .formMiddle .info {
+.newCard .formMiddle .info,
+.challange .formMiddle .info {
   color: #b9c3c8;
   font-weight: 700;
   margin: 0 auto;
@@ -60,7 +78,8 @@
 }
 .cardForm .formMiddle .name,
 .cardEdit .formMiddle .name,
-.newCard .formMiddle .name {
+.newCard .formMiddle .name,
+.challange .formMiddle .name {
   width: 163px;
   outline: none;
   border: none;
@@ -72,16 +91,26 @@
   color: #282828;
   font-weight: 700;
 }
+.challange .formMiddle .name {
+  color: #fff;
+  background: none;
+}
+.newCard .formMiddle .name,
+.challange .formMiddle .name {
+  border-bottom: none;
+}
 .cardForm .formBottom,
 .cardEdit .formBottom,
-.newCard .formBottom {
+.newCard .formBottom,
+.challange .formBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .cardForm .formBottom .groupBtn,
 .cardEdit .formBottom .groupBtn,
-.newCard .formBottom .groupBtn {
+.newCard .formBottom .groupBtn,
+.challange .formBottom .groupBtn {
   color: #282828;
   border: none;
   border-radius: 0px 15px 15px 0px;
@@ -91,27 +120,31 @@
 }
 .cardForm .formBottom .groupBtn:hover,
 .cardEdit .formBottom .groupBtn:hover,
-.newCard .formBottom .groupBtn:hover {
+.newCard .formBottom .groupBtn:hover,
+.challange.formBottom .groupBtn:hover {
   transform: scale(1.1);
   translate: 5%;
 }
 .cardForm .formBottom .options,
 .cardEdit .formBottom .options,
-.newCard .formBottom .options {
+.newCard .formBottom .options,
+.challange .formBottom .options {
   margin-right: 20px;
   color: #b9c3c8;
   text-align: center;
 }
 .cardForm .formBottom .options .cancel,
 .cardEdit .formBottom .options .cancel,
-.newCard .formBottom .options .cancel {
+.newCard .formBottom .options .cancel,
+.challange .formBottom .options .cancel {
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
 .cardForm .formBottom .options .submit,
 .cardEdit .formBottom .options .submit,
-.newCard .formBottom .options .submit {
+.newCard .formBottom .options .submit,
+.challange .formBottom .options .submit {
   display: inline-block;
   position: relative;
   border: none;
@@ -121,7 +154,8 @@
 }
 .cardForm .formBottom .options .submit::after,
 .cardEdit .formBottom .options .submit::after,
-.newCard .formBottom .options .submit::after {
+.newCard .formBottom .options .submit::after,
+.challange .formBottom .options .submit::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -135,65 +169,82 @@
 }
 .cardForm .formBottom .options .submit:hover::after,
 .cardEdit .formBottom .options .submit:hover::after,
-.newCard .formBottom .options .submit:hover::after {
+.newCard .formBottom .options .submit:hover::after,
+.challange .formBottom .options .submit:hover::after {
   transform: scaleX(0.8);
   transform-origin: bottom midle;
 }
 
 @-webkit-keyframes svg-shadow {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(0, 217, 255, 0.3)) drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(0, 217, 255, 0.3))
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(0, 217, 255, 0.6)) drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.6))
+      drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
   }
 }
 
 @keyframes svg-shadow {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(0, 217, 255, 0.3)) drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(0, 217, 255, 0.3))
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(0, 217, 255, 0.6)) drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(0, 217, 255, 0.6))
+      drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
   }
 }
 @-webkit-keyframes svg-shadow-done {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(185, 195, 200, 0.3)) drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(185, 195, 200, 0.3))
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(185, 195, 200, 0.6)) drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.6))
+      drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
   }
 }
 @keyframes svg-shadow-done {
   from {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(185, 195, 200, 0.3)) drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
+    filter: drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px rgba(185, 195, 200, 0.3))
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(185, 195, 200, 0.6)) drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
+    filter: drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px rgba(185, 195, 200, 0.6))
+      drop-shadow(0 0 4px rgba(185, 195, 200, 0.6));
   }
 }
-[value=Easy],
-[value=Normal],
-[value=Hard] {
+[value="Easy"],
+[value="Normal"],
+[value="Hard"] {
   outline: none;
   border: none;
   background-color: transparent;
   font-weight: 400;
   -webkit-animation: blink-easy 0.5s;
-          animation: blink-easy 0.5s;
+  animation: blink-easy 0.5s;
   display: inline-block;
 }
 
-[value=Easy] {
+[value="Easy"] {
   color: green;
 }
 
-[value=Normal] {
+[value="Normal"] {
   color: orange;
 }
 
-[value=Hard] {
+[value="Hard"] {
   color: red;
 }
 
@@ -234,38 +285,42 @@
     width: 0;
   }
 }
-[type=datetime-local] {
+[type="datetime-local"] {
   outline: none;
   border: none;
   display: block;
   color: #b9c3c8;
+  margin: 0;
+  text-align: center;
+  background: none;
 }
 
 ::-webkit-calendar-picker-indicator {
-  filter: invert(78%) sepia(49%) saturate(5346%) hue-rotate(148deg) brightness(102%) contrast(108%);
+  filter: invert(78%) sepia(49%) saturate(5346%) hue-rotate(148deg)
+    brightness(102%) contrast(108%);
 }
 
-[value=STUFF] {
+[value="STUFF"] {
   background-color: #b9c3c8;
 }
 
-[value=FAMILY] {
+[value="FAMILY"] {
   background-color: #ffe6d3;
 }
 
-[value=HEALTH] {
+[value="HEALTH"] {
   background-color: #cdf7ff;
 }
 
-[value=LEARNING] {
+[value="LEARNING"] {
   background-color: #fff6c0;
 }
 
-[value=LEISURE] {
+[value="LEISURE"] {
   background-color: #f8d2ff;
 }
 
-[value=WORK] {
+[value="WORK"] {
   background-color: #d3f6ce;
 }
 
@@ -278,119 +333,134 @@
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .cardForm,
-.cardEdit,
-.newCard {
+  .cardEdit,
+  .newCard,
+  .challange {
     width: 290px;
     height: 260px;
   }
   .cardForm .formTop,
-.cardEdit .formTop,
-.newCard .formTop {
-    margin: 0 0 40px 10px;
+  .cardEdit .formTop,
+  .newCard .formTop,
+  .challange .formTop {
+    margin: 0 0 20px 10px;
   }
   .cardForm .formMiddle .info,
-.cardEdit .formMiddle .info,
-.newCard .formMiddle .info {
+  .cardEdit .formMiddle .info,
+  .newCard .formMiddle .info,
+  .challange .formMiddle .info {
     font-size: 14px;
     line-height: 14px;
   }
   .cardForm .formMiddle .name,
-.cardEdit .formMiddle .name,
-.newCard .formMiddle .name {
+  .cardEdit .formMiddle .name,
+  .newCard .formMiddle .name,
+  .challange .formMiddle .name {
     font-size: 20px;
     line-height: 20px;
     margin: 10px auto 12px auto;
   }
+
   .cardForm .formBottom,
-.cardEdit .formBottom,
-.newCard .formBottom {
+  .cardEdit .formBottom,
+  .newCard .formBottom,
+  .challange .formBottom {
     font-size: 14px;
     line-height: 14px;
   }
-  [value=Easy],
-[value=Normal],
-[value=Hard] {
+  [value="Easy"],
+  [value="Normal"],
+  [value="Hard"] {
     font-size: 16px;
     line-height: 16px;
   }
-  input[type=datetime-local] {
+  input[type="datetime-local"] {
     font-size: 18px;
     line-height: 18px;
     margin: 0 auto 34px auto;
   }
-  [value=STUFF],
-[value=FAMILY],
-[value=HEALTH],
-[value=LEARNING],
-[value=LEISURE],
-[value=WORK] {
+  [value="STUFF"],
+  [value="FAMILY"],
+  [value="HEALTH"],
+  [value="LEARNING"],
+  [value="LEISURE"],
+  [value="WORK"] {
     width: 120px;
     font-size: 14px;
     line-height: 35px;
   }
-  .newCard .groupBtn {
+  .newCard .groupBtn,
+  .challange .groupBtn {
     margin-top: 35px;
   }
-  .newCard .formMiddle {
+  /* .newCard .formMiddle,
+  .challange .formMiddle {
     margin-top: 60px;
-  }
+  } */
 }
 @media screen and (min-width: 768px) {
   .cardForm,
-.cardEdit,
-.newCard {
+  .cardEdit,
+  .newCard,
+  .challange {
     width: 205px;
     height: 200px;
   }
   .cardForm .formTop,
-.cardEdit .formTop,
-.newCard .formTop {
+  .cardEdit .formTop,
+  .challange .formTop,
+  .newCard .formTop {
     margin: 0 0 20px 10px;
   }
   .cardForm .formMiddle .info,
-.cardEdit .formMiddle .info,
-.newCard .formMiddle .info {
+  .cardEdit .formMiddle .info,
+  .challange .formMiddle .info,
+  .newCard .formMiddle .info {
     font-size: 12px;
     line-height: 12px;
   }
   .cardForm .formMiddle .name,
-.cardEdit .formMiddle .name,
-.newCard .formMiddle .name {
+  .cardEdit .formMiddle .name,
+  .challange .formMiddle .name,
+  .newCard .formMiddle .name {
     font-size: 16px;
     line-height: 16px;
     margin: 0 auto;
   }
   .cardForm .formBottom,
-.cardEdit .formBottom,
-.newCard .formBottom {
+  .cardEdit .formBottom,
+  .challange .formBottom,
+  .newCard .formBottom {
     font-size: 11px;
     line-height: 11px;
   }
-  [value=Easy],
-[value=Normal],
-[value=Hard] {
+  [value="Easy"],
+  [value="Normal"],
+  [value="Hard"] {
     font-size: 14px;
     line-height: 14px;
   }
-  input[type=datetime-local] {
+  input[type="datetime-local"] {
     font-size: 14px;
     line-height: 14px;
     margin: 0 auto 40px auto;
   }
-  [value=STUFF],
-[value=FAMILY],
-[value=HEALTH],
-[value=LEARNING],
-[value=LEISURE],
-[value=WORK] {
+  [value="STUFF"],
+  [value="FAMILY"],
+  [value="HEALTH"],
+  [value="LEARNING"],
+  [value="LEISURE"],
+  [value="WORK"] {
     width: 88px;
     font-size: 11px;
     line-height: 25px;
   }
-  .newCard .groupBtn {
+  .newCard .groupBtn,
+  .challange .groupBtn {
     margin-top: 25px;
   }
-  .newCard .formMiddle {
+  .newCard .formMiddle,
+  .challange .formMiddle {
     margin-top: 35px;
   }
-}/*# sourceMappingURL=CardForm.module.css.map */
+} /*# sourceMappingURL=CardForm.module.css.map */

@@ -1,28 +1,63 @@
 .questListsContainer {
   background-color: #f2f3f7;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  justify-content: center;
 }
-.questListsContainer .today {
+
+.questListsContainer .today,
+.questListsContainer .done {
   font-weight: 300;
   font-size: 15px;
   line-height: 15px;
   padding-bottom: 20px;
 }
-.questListsContainer .cards {
-  display: inline-flex;
-  flex-wrap: wrap;
+.questListsContainer .done {
+  cursor: pointer;
 }
-
+.questListsContainer .done::after {
+  content: "";
+  display: block;
+  max-width: 1069px;
+  min-width: 115px;
+  height: 0px;
+  border: 1px dashed #b9c3c8;
+  position: relative;
+  top: -5px;
+  left: 68px;
+}
+.questListsContainer .cards {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.questListsContainer .svg {
+  transform: rotate(180deg);
+  margin-left: 10px;
+}
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .questListsContainer {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 }
+
 @media screen and (min-width: 768px) {
   .questListsContainer {
     padding: 30px 70px 20px 70px;
   }
-}/*# sourceMappingURL=QuestListsContainer.module.css.map */
+}
+/*# sourceMappingURL=QuestListsContainer.module.css.map */

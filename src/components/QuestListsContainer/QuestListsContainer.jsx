@@ -20,6 +20,9 @@ const QuestListsContainer = () => {
     setParagraphValue("CREATE NEW QUEST");
   };
   useEffect(() => {
+    clearPrevious();
+  }, []);
+  useEffect(() => {
     const json = JSON.stringify(storage);
     localStorage.setItem("quest", json);
     renderToday();
@@ -47,9 +50,9 @@ const QuestListsContainer = () => {
       const today = new Date();
       const date = task.date.split("T")[0].split("-");
       return (
-        date[0] == today.getFullYear() &&
-        date[1] == today.getMonth() + 1 &&
-        date[2] == today.getDate() + 1 &&
+        Number(date[0]) === today.getFullYear() &&
+        Number(date[1]) === today.getMonth() + 1 &&
+        Number(date[2]) === today.getDate() + 1 &&
         task
       );
     });
@@ -60,9 +63,9 @@ const QuestListsContainer = () => {
       const today = new Date();
       const date = task.date.split("T")[0].split("-");
       return (
-        date[0] == today.getFullYear() &&
-        date[1] == today.getMonth() + 1 &&
-        date[2] == today.getDate() &&
+        Number(date[0]) === today.getFullYear() &&
+        Number(date[1]) === today.getMonth() + 1 &&
+        Number(date[2]) === today.getDate() &&
         task
       );
     });
@@ -72,7 +75,19 @@ const QuestListsContainer = () => {
     const doneComponent = storage.map((task) => task.progress === true && task);
     setCompletedQuest(doneComponent);
   };
-
+  const clearPrevious = () => {
+    const previousTasks = storage.filter((task) => {
+      const today = new Date();
+      const date = task.date.split("T")[0].split("-");
+      return (
+        Number(date[0]) >= today.getFullYear() ||
+        Number(date[1]) >= today.getMonth() + 1 ||
+        (Number(date[2]) >= today.getDate() && task)
+      );
+    });
+    setStorage(previousTasks);
+    console.log(storage, previousTasks);
+  };
   return (
     <div className={styles.questListsContainer}>
       <h2 className={styles.today}>TODAY</h2>

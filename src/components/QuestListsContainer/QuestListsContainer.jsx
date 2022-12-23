@@ -7,6 +7,7 @@ const QuestListsContainer = () => {
   const [isCreateNew, setIsisCreateNew] = useState(false);
   const [newQuest, setNewQuest] = useState([]);
   const [todayQuest, setTodayQuest] = useState([]);
+  const [challange, setChallange] = useState([]);
   const [tomorrowQuest, setTomorrowQuest] = useState([]);
   const [completedQuest, setCompletedQuest] = useState([]);
   const [showDoneComponent, toggleDoneComponent] = useState(false);
@@ -22,6 +23,7 @@ const QuestListsContainer = () => {
   };
   useEffect(() => {
     clearPrevious();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     const json = JSON.stringify(storage);
@@ -29,6 +31,7 @@ const QuestListsContainer = () => {
     renderToday();
     renderTomorrow();
     renderDone();
+    renderChallange();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storage]);
   const tasksSubmit = (values) => {
@@ -73,6 +76,19 @@ const QuestListsContainer = () => {
     });
     setTodayQuest(todayTasks);
   };
+  const renderChallange = () => {
+    const challange = storage.filter((task) => {
+      const today = new Date();
+      const date = task.date.split("T")[0].split("-");
+      return (
+        (task.progress === false && Number(date[0]) > today.getFullYear()) ||
+        Number(date[1]) > today.getMonth() + 1 ||
+        (Number(date[2]) > today.getDate() + 1 && task)
+      );
+    });
+    setChallange(challange);
+    console.log(challange);
+  };
   const renderDone = () => {
     const doneTask = storage.filter((task) => task.progress === true && task);
     setCompletedQuest(doneTask);
@@ -102,9 +118,19 @@ const QuestListsContainer = () => {
             onSubmit={tasksSubmit}
           />
         )}
-        {/* render today quests from storage */}
+        {/* render today/ challange quests from storage */}
         {todayQuest?.map((task) => (
           <CardForm
+            key={task.id}
+            tasks={task}
+            onSubmit={tasksUpdate}
+            handleDelete={taskDelete}
+            renderDone={renderDone}
+          />
+        ))}
+        {challange?.map((task) => (
+          <CardForm
+            challange={challange}
             key={task.id}
             tasks={task}
             onSubmit={tasksUpdate}
@@ -127,7 +153,7 @@ const QuestListsContainer = () => {
       {/* render done quests from storage */}
       {completedQuest.length > 0 && (
         <h2
-          className={styles.today}
+          className={styles.done}
           onClick={() =>
             !showDoneComponent
               ? toggleDoneComponent(true)
@@ -135,6 +161,18 @@ const QuestListsContainer = () => {
           }
         >
           DONE
+          <svg
+            className={styles.svg}
+            id="icon-Polygon"
+            viewBox="0 0 77 32"
+            width="12px"
+            height="6px"
+          >
+            <path
+              fill="#00d7ff"
+              d="M38.4 32l-33.255-28.8h66.511l-33.256 28.8z"
+            ></path>
+          </svg>
         </h2>
       )}
       {showDoneComponent &&

@@ -4,11 +4,17 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(21, 57, 90, 0.3019607843);
+  background-color: #15395a4d;
   border-radius: 10px;
 }
 
@@ -17,7 +23,10 @@
   width: 163px;
   height: 77px;
   background-color: #fff;
-  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03), 3px 4px 4px rgba(21, 57, 90, 0.03);
+  -webkit-box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
 }
 .cancelModal .info {
@@ -27,9 +36,11 @@
   color: #282828;
   text-align: center;
 }
+
 .cancelModal .options {
   text-align: center;
 }
+
 .cancelModal .options .cancel {
   position: relative;
   background-color: transparent;
@@ -42,25 +53,36 @@
   color: #24d40c;
   cursor: pointer;
 }
+
 .cancelModal .options .cancel::after {
   content: "";
   position: absolute;
   width: 100%;
+  -webkit-transform: scaleX(0);
   transform: scaleX(0);
   height: 2px;
   bottom: 0;
   left: 0;
   background-color: #24d40c;
+  -webkit-transform-origin: bottom midle;
   transform-origin: bottom midle;
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
   transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
 }
+
 .cancelModal .options .cancel:hover::after {
+  -webkit-transform: scaleX(0.8);
   transform: scaleX(0.8);
+  -webkit-transform-origin: bottom midle;
   transform-origin: bottom midle;
 }
+
 .cancelModal .options span {
   color: #b9c3c8;
 }
+
 .cancelModal .options .delete {
   position: relative;
   background-color: transparent;
@@ -73,19 +95,29 @@
   color: #db0938;
   cursor: pointer;
 }
+
 .cancelModal .options .delete::after {
   content: "";
   position: absolute;
   width: 100%;
+  -webkit-transform: scaleX(0);
   transform: scaleX(0);
   height: 2px;
   bottom: 0;
   left: 0;
   background-color: #db0938;
+  -webkit-transform-origin: bottom midle;
   transform-origin: bottom midle;
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
   transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
 }
+
 .cancelModal .options .delete:hover::after {
+  -webkit-transform: scaleX(0.8);
   transform: scaleX(0.8);
+  -webkit-transform-origin: bottom midle;
   transform-origin: bottom midle;
-}/*# sourceMappingURL=CancelModal.module.css.map */
+}
+/*# sourceMappingURL=CancelModal.module.css.map */

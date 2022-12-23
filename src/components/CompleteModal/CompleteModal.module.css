@@ -4,34 +4,56 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   z-index: 2;
   background-color: #fff;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .completeModal {
   background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .completeModal .info {
   color: #000;
 }
+
 .completeModal .info .name {
   color: #00d7ff;
   text-decoration: underline;
 }
+
 .completeModal .continue {
   color: #b9c3c8;
   font-weight: 400;
 }
+
 .completeModal .continue .continueArrow {
   color: #00d7ff;
 }
@@ -47,6 +69,7 @@
     line-height: 18px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .completeModal {
     font-weight: 400;
@@ -57,4 +80,5 @@
     font-size: 12px;
     line-height: 12px;
   }
-}/*# sourceMappingURL=CompleteModal.module.css.map */
+}
+/*# sourceMappingURL=CompleteModal.module.css.map */

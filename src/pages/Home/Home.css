@@ -29,14 +29,19 @@
     max-width: 515px;
   }
   .home {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-image: url("../../images/pic1.png"), url("../../images/pic2.png");
     background-position: top right, bottom right;
     background-repeat: no-repeat, no-repeat;
     height: 90vh;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .container {
     padding: 190px 230px;
@@ -48,4 +53,5 @@
     background-repeat: no-repeat, no-repeat;
     height: 90vh;
   }
-}/*# sourceMappingURL=Home.css.map */
+}
+/*# sourceMappingURL=Home.css.map */

@@ -120,7 +120,6 @@ const CardForm = ({
                 type="button"
                 id="groupBtn"
                 onClick={switchGroupEdit}
-                // value={"STUFF"}
                 ref={groupRef}
                 defaultValue={group || "STUFF"}
               />
@@ -157,9 +156,7 @@ const CardForm = ({
             <CompleteModal
               shownCompleteModal={completeModalShown}
               tasks={tasks}
-              closeCompleteModal={() => {
-                toggleCompleteModal(false);
-              }}
+              closeCompleteModal={() => toggleCompleteModal(false)}
             />
             {cancelModalShown && (
               <CancelModal

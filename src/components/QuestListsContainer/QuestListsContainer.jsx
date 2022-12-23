@@ -9,6 +9,7 @@ const QuestListsContainer = () => {
   const [todayQuest, setTodayQuest] = useState([]);
   const [tomorrowQuest, setTomorrowQuest] = useState([]);
   const [completedQuest, setCompletedQuest] = useState([]);
+  const [showDoneComponent, toggleDoneComponent] = useState(false);
   const [paragraphValue, setParagraphValue] = useState(" ");
   const [storage, setStorage] = useState(() => {
     return JSON.parse(localStorage.getItem("quest")) || [];
@@ -39,7 +40,6 @@ const QuestListsContainer = () => {
       task.id === values.id ? values : task
     );
     setStorage(updatedTask);
-    console.log(storage);
   };
   const taskDelete = (id) => {
     const newStorage = storage.filter((task) => task.id !== id);
@@ -50,6 +50,7 @@ const QuestListsContainer = () => {
       const today = new Date();
       const date = task.date.split("T")[0].split("-");
       return (
+        task.progress === false &&
         Number(date[0]) === today.getFullYear() &&
         Number(date[1]) === today.getMonth() + 1 &&
         Number(date[2]) === today.getDate() + 1 &&
@@ -63,6 +64,7 @@ const QuestListsContainer = () => {
       const today = new Date();
       const date = task.date.split("T")[0].split("-");
       return (
+        task.progress === false &&
         Number(date[0]) === today.getFullYear() &&
         Number(date[1]) === today.getMonth() + 1 &&
         Number(date[2]) === today.getDate() &&
@@ -72,8 +74,8 @@ const QuestListsContainer = () => {
     setTodayQuest(todayTasks);
   };
   const renderDone = () => {
-    const doneComponent = storage.map((task) => task.progress === true && task);
-    setCompletedQuest(doneComponent);
+    const doneTask = storage.filter((task) => task.progress === true && task);
+    setCompletedQuest(doneTask);
   };
   const clearPrevious = () => {
     const previousTasks = storage.filter((task) => {
@@ -86,7 +88,6 @@ const QuestListsContainer = () => {
       );
     });
     setStorage(previousTasks);
-    console.log(storage, previousTasks);
   };
   return (
     <div className={styles.questListsContainer}>
@@ -123,16 +124,28 @@ const QuestListsContainer = () => {
           renderDone={renderDone}
         />
       ))}
-      {completedQuest.length > 0 && <h2 className={styles.today}>DONE</h2>}
-      {/* completedQuest.map((task) => (
+      {/* render done quests from storage */}
+      {completedQuest.length > 0 && (
+        <h2
+          className={styles.today}
+          onClick={() =>
+            !showDoneComponent
+              ? toggleDoneComponent(true)
+              : toggleDoneComponent(false)
+          }
+        >
+          DONE
+        </h2>
+      )}
+      {showDoneComponent &&
+        completedQuest?.map((task) => (
           <CardForm
             key={task.id}
             tasks={task}
             onSubmit={tasksUpdate}
             handleDelete={taskDelete}
           />
-        ))} */}
-
+        ))}
       <AddButton createNewQuest={handleClick} />
     </div>
   );

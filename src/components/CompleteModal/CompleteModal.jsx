@@ -10,14 +10,9 @@ const subString = (str) => {
   }
 };
 
-const CompleteModal = ({
-  children,
-  shownCompleteModal,
-  closeCompleteModal,
-  tasks,
-}) => {
-  const { name } = tasks;
-  const title = name;
+const CompleteModal = ({ shownCompleteModal, closeCompleteModal, tasks }) => {
+  const { name, id } = tasks;
+  const title = name || "";
 
   return shownCompleteModal ? (
     <div className={styles.modalBackdrop}>
@@ -28,7 +23,11 @@ const CompleteModal = ({
 
         <CompleteSvg />
 
-        <p className={styles.continue} onClick={closeCompleteModal}>
+        <p
+          className={styles.continue}
+          type="submit"
+          onClick={() => closeCompleteModal(id)}
+        >
           Continue
           <span className={styles.continueArrow}>
             <svg

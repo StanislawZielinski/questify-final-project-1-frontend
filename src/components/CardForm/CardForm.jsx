@@ -26,7 +26,7 @@ const CardForm = ({
   const progressRef = useRef();
   const nameRef = useRef();
   const dateRef = useRef();
-  const { name, date, level, group, progress, id } = tasks;
+  const { name, date, level, group, progress, id, type } = tasks;
   const [isActive, setIsActive] = useState(false);
   const isCreateNew = paragraphValue === "CREATE NEW QUEST";
   const handleSubmit = (e) => {
@@ -38,6 +38,7 @@ const CardForm = ({
       progress: progressRef.current.checked,
       name: nameRef.current.value,
       date: dateRef.current.value,
+      type: "quest",
     };
     onSubmit(data);
     console.clear();
@@ -53,6 +54,7 @@ const CardForm = ({
         progress: progressRef.current.checked,
         name: nameRef.current.value,
         date: dateRef.current.value,
+        type,
       };
       onSubmit(data);
     }
@@ -194,7 +196,11 @@ const CardForm = ({
         <div
           key={id}
           id={id}
-          className={challange ? styles.challange : styles.newCard}
+          className={
+            challange || type === "challange"
+              ? styles.challange
+              : styles.newCard
+          }
         >
           <form className={styles.card} onClick={handleClick}>
             <div className={styles.formTop}>
@@ -211,7 +217,7 @@ const CardForm = ({
                   ref={progressRef}
                   name={progress}
                 />
-                {challange ? (
+                {challange || type === "challange" ? (
                   <svg
                     className={styles.checkmark}
                     id="icon-trophy"

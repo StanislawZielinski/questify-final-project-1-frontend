@@ -12,6 +12,7 @@ const QuestListsContainer = () => {
   const [completedQuest, setCompletedQuest] = useState([]);
   const [showDoneComponent, toggleDoneComponent] = useState(false);
   const [paragraphValue, setParagraphValue] = useState(" ");
+  const [rotate, setRotate] = useState(false);
   const [storage, setStorage] = useState(() => {
     return JSON.parse(localStorage.getItem("quest")) || [];
   });
@@ -77,17 +78,24 @@ const QuestListsContainer = () => {
     setTodayQuest(todayTasks);
   };
   const renderChallange = () => {
+    // eslint-disable-next-line array-callback-return
     const challange = storage.filter((task) => {
       const today = new Date();
       const date = task.date.split("T")[0].split("-");
-      return (
-        (task.progress === false && Number(date[0]) > today.getFullYear()) ||
-        Number(date[1]) > today.getMonth() + 1 ||
-        (Number(date[2]) > today.getDate() + 1 && task)
-      );
+      if (
+        task.progress === false &&
+        (Number(date[0]) > today.getFullYear() ||
+          Number(date[1]) > today.getMonth() + 1 ||
+          Number(date[2]) > today.getDate() + 1)
+      ) {
+        return task;
+      }
     });
+    const setChallangeType = challange.map(
+      (task) => (task.type = "challange") && task
+    );
     setChallange(challange);
-    console.log(challange);
+    console.log(setChallangeType);
   };
   const renderDone = () => {
     const doneTask = storage.filter((task) => task.progress === true && task);
@@ -155,14 +163,15 @@ const QuestListsContainer = () => {
         <h2
           className={styles.done}
           onClick={() =>
-            !showDoneComponent
+            (!showDoneComponent
               ? toggleDoneComponent(true)
-              : toggleDoneComponent(false)
+              : toggleDoneComponent(false)) &
+            (!rotate ? setRotate(true) : setRotate(false))
           }
         >
           DONE
           <svg
-            className={styles.svg}
+            className={!rotate ? styles.svg : styles.svgRotate}
             id="icon-Polygon"
             viewBox="0 0 77 32"
             width="12px"

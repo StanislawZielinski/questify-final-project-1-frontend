@@ -41,7 +41,13 @@
   justify-content: center;
 }
 .questListsContainer .svg {
+  transform: rotate(0deg);
+  margin-left: 10px;
+  transition: transform 500 linear;
+}
+.questListsContainer .svgRotate {
   transform: rotate(180deg);
+  transition: transform 500 linear;
   margin-left: 10px;
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
